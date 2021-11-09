@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DBMANTENIMIENTO" Class="DcMantenimientoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=DBMANTENIMIENTO;Integrated Security=True" SettingsObjectName="AccesoDatos.ClassLibrary.Properties.Settings" SettingsPropertyName="DBMANTENIMIENTOConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CATEGORIA" Member="CATEGORIA">
+    <Type Name="CATEGORIA">
+      <Column Name="cat_id" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cat_descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="car_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="car_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CATEGORIA_PRODUCTO" Member="PRODUCTO" ThisKey="cat_id" OtherKey="cat_id" Type="PRODUCTO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VEHICULO" Member="VEHICULO">
+    <Type Name="VEHICULO">
+      <Column Name="veh_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="veh_placa" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="veh_chasis" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="veh_anio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="veh_color" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="veh_cilindraje" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="veh_motor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="veh_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="aveh_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="mod_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cli_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="VEHICULO_ORDEN" Member="ORDEN" ThisKey="veh_id" OtherKey="veh_id" Type="ORDEN" />
+      <Association Name="CLIENTE_VEHICULO" Member="CLIENTE" ThisKey="cli_id" OtherKey="cli_id" Type="CLIENTE" IsForeignKey="true" />
+      <Association Name="MODELO_VEHICULO" Member="MODELO" ThisKey="mod_id" OtherKey="mod_id" Type="MODELO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CLIENTE" Member="CLIENTE">
+    <Type Name="CLIENTE">
+      <Column Name="cli_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cli_identiticacion" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="cli_tipoidentificacion" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="cli_apellidos" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="cli_nombres" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="cli_direccion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cli_telefono" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="cli_correo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="cli_fechanacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="cli_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="cli_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CLIENTE_VEHICULO" Member="VEHICULO" ThisKey="cli_id" OtherKey="cli_id" Type="VEHICULO" />
+      <Association Name="CLIENTE_RESERVA" Member="RESERVA" ThisKey="cli_id" OtherKey="cli_id" Type="RESERVA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DETALL_SERVICIO" Member="DETALL_SERVICIO">
+    <Type Name="DETALL_SERVICIO">
+      <Column Name="dse_descripcion" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ser_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ORDEN_DETALL_SERVICIO" Member="ORDEN" ThisKey="ord_id" OtherKey="ord_id" Type="ORDEN" IsForeignKey="true" />
+      <Association Name="SERVICIO_DETALL_SERVICIO" Member="SERVICIO" ThisKey="ser_id" OtherKey="ser_id" Type="SERVICIO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DETALLE_ORDEN" Member="DETALLE_ORDEN">
+    <Type Name="DETALLE_ORDEN">
+      <Column Name="deo_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pro_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ORDEN_DETALLE_ORDEN" Member="ORDEN" ThisKey="ord_id" OtherKey="ord_id" Type="ORDEN" IsForeignKey="true" />
+      <Association Name="PRODUCTO_DETALLE_ORDEN" Member="PRODUCTO" ThisKey="pro_id" OtherKey="pro_id" Type="PRODUCTO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MARCA" Member="MARCA">
+    <Type Name="MARCA">
+      <Column Name="mar_id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="mar_descripcion" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="mar_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="mar_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MARCA_MODELO" Member="MODELO" ThisKey="mar_id" OtherKey="mar_id" Type="MODELO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MODELO" Member="MODELO">
+    <Type Name="MODELO">
+      <Column Name="mod_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="mod_descripcion" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="mod_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="mod_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="mar_id" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="MODELO_VEHICULO" Member="VEHICULO" ThisKey="mod_id" OtherKey="mod_id" Type="VEHICULO" />
+      <Association Name="MARCA_MODELO" Member="MARCA" ThisKey="mar_id" OtherKey="mar_id" Type="MARCA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ORDEN" Member="ORDEN">
+    <Type Name="ORDEN">
+      <Column Name="ord_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ord_kilometraje" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ord_observacion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ord_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ord_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="veh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ORDEN_DETALL_SERVICIO" Member="DETALL_SERVICIO" ThisKey="ord_id" OtherKey="ord_id" Type="DETALL_SERVICIO" />
+      <Association Name="ORDEN_DETALLE_ORDEN" Member="DETALLE_ORDEN" ThisKey="ord_id" OtherKey="ord_id" Type="DETALLE_ORDEN" />
+      <Association Name="VEHICULO_ORDEN" Member="VEHICULO" ThisKey="veh_id" OtherKey="veh_id" Type="VEHICULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTO" Member="PRODUCTO">
+    <Type Name="PRODUCTO">
+      <Column Name="pro_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pro_codigo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pro_nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="pro_precio" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="pro_stockminimo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pro_stokcmaximo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="pro_original" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="pro_observacion" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="pro_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="pro_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cat_id" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="PRODUCTO_DETALLE_ORDEN" Member="DETALLE_ORDEN" ThisKey="pro_id" OtherKey="pro_id" Type="DETALLE_ORDEN" />
+      <Association Name="CATEGORIA_PRODUCTO" Member="CATEGORIA" ThisKey="cat_id" OtherKey="cat_id" Type="CATEGORIA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RESERVA" Member="RESERVA">
+    <Type Name="RESERVA">
+      <Column Name="res_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="res_fecha" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="res_numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="res_observacion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="res_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="res_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cli_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CLIENTE_RESERVA" Member="CLIENTE" ThisKey="cli_id" OtherKey="cli_id" Type="CLIENTE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROL" Member="ROL">
+    <Type Name="ROL">
+      <Column Name="rol_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rol_descripcion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="rol_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="rol_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="ROL_USUARIO" Member="USUARIO" ThisKey="rol_id" OtherKey="rol_id" Type="USUARIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SERVICIO" Member="SERVICIO">
+    <Type Name="SERVICIO">
+      <Column Name="ser_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ser_nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ser_precio" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ser_observacion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ser_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ser_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="SERVICIO_DETALL_SERVICIO" Member="DETALL_SERVICIO" ThisKey="ser_id" OtherKey="ser_id" Type="DETALL_SERVICIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USUARIO" Member="USUARIO">
+    <Type Name="USUARIO">
+      <Column Name="usu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_correo" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_apellidos" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_nombres" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="rol_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ROL_USUARIO" Member="ROL" ThisKey="rol_id" OtherKey="rol_id" Type="ROL" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
