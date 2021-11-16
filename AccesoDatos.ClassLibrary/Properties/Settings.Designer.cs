@@ -32,5 +32,15 @@ namespace AccesoDatos.ClassLibrary.Properties {
                 return ((string)(this["DBMANTENIMIENTOConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=DBMATRICULA;Integrated Security=True")]
+        public string DBMATRICULAConnectionString {
+            get {
+                return ((string)(this["DBMATRICULAConnectionString"]));
+            }
+        }
     }
 }
