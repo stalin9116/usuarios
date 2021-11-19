@@ -16,13 +16,14 @@ namespace Logica.ClassLibrary
         {
             try
             {
-                var lista = dc.Usuario.Where(data => data.usu_status == 'A');
+                var lista = dc.Usuario.Where(data => data.usu_status == 'A')
+                                      .OrderBy(ord => ord.usu_apellidos);
 
                 return lista.ToList();
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("Error al obtener Usuario "+ ex.Message);
+                throw new ArgumentException("Error al obtener Usuario " + ex.Message);
             }
         }
 
@@ -73,7 +74,7 @@ namespace Logica.ClassLibrary
 
                 result = true;
                 return result;
-                
+
             }
             catch (Exception ex)
             {
@@ -104,7 +105,7 @@ namespace Logica.ClassLibrary
             try
             {
                 bool result = false;
-                
+
                 dataUsuario.usu_status = 'I';
                 //Commit a la base
                 dc.SubmitChanges();
@@ -118,9 +119,6 @@ namespace Logica.ClassLibrary
                 throw new ArgumentException("Error al eliminar Usuario " + ex.Message);
             }
         }
-
-
-
 
     }
 }

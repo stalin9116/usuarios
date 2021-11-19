@@ -31,6 +31,8 @@ namespace usuarios
                 string correo = txtNombre.Text.TrimStart().TrimEnd();
                 string clave = txtPassword.Text;
 
+                //string ecriptar = logica.encriptar(clave);
+
                 if (!string.IsNullOrEmpty(correo) && !string.IsNullOrEmpty(clave))
                 {
                     Usuario usuario = new Usuario();
