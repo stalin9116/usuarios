@@ -45,6 +45,8 @@
     <Compile Include="LogicaRol.cs" />
     <Compile Include="LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\Encriptar.cs" />
+    <Compile Include="Utilidades\Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos.ClassLibrary\AccesoDatos.ClassLibrary.csproj">

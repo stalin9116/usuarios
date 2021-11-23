@@ -36,7 +36,7 @@ namespace usuarios
                 if (!string.IsNullOrEmpty(correo) && !string.IsNullOrEmpty(clave))
                 {
                     Usuario usuario = new Usuario();
-                    usuario = LogicaUsuario.getUserXLogin(correo, clave);
+                    usuario = LogicaUsuario.getUserXLogin(correo, Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(clave));
                     if (usuario != null)
                     {
                         var dataUser = usuario.usu_nombres + " " + usuario.usu_apellidos;
@@ -46,9 +46,15 @@ namespace usuarios
                         MessageBox.Show("Bienvenido al sistema\n Rol:" + usuario.Rol.rol_descripcion 
                         + "\nUsuario: " + dataUser2, "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        Form1 form1 = new Form1();
-                        form1.Show();
+                        //Form1 form1 = new Form1();
+                        //form1.Show();
+                        
+
+                        Formularios.FrmUsuario frmUsuario = new Formularios.FrmUsuario();
+                        frmUsuario.Show();
                         this.Hide();
+
+
                     }
                 }
                 else

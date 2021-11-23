@@ -19,7 +19,6 @@ namespace usuarios.Formularios
         public FrmUsuario()
         {
             InitializeComponent();
-
         }
 
         private void FrmUsuario_Load(object sender, EventArgs e)
@@ -110,6 +109,49 @@ namespace usuarios.Formularios
             saveUser();
         }
 
+        private string validations(Usuario usuario)
+        {
+            string mensaje = string.Empty;
+            if (string.IsNullOrEmpty(usuario.usu_apellidos))
+            {
+                mensaje += "* Apellidos campo obligatorio\n";
+            }
+            if (string.IsNullOrEmpty(usuario.usu_nombres))
+            {
+                mensaje += "* Nombres campo obligatorio\n";
+            }
+            if (string.IsNullOrEmpty(usuario.usu_password) || string.IsNullOrEmpty(txtClavveConfirmar.Text))
+            {
+                mensaje += "* Clave campo obligatorio\n";
+            }
+            if (string.IsNullOrEmpty(usuario.usu_correo))
+            {
+                mensaje += "* Correo campo obligatorio\n";
+            }
+            if (usuario.rol_id == 0)
+            {
+                mensaje += "* Rol campo obligatorio\n";
+            }
+
+            if (!string.IsNullOrEmpty(txtClave.Text) && !string.IsNullOrEmpty(txtClavveConfirmar.Text))
+            {
+                if (!txtClave.Text.Equals(txtClavveConfirmar.Text))
+                {
+                    mensaje += "* Claves no son iguales\n";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(usuario.usu_correo))
+            {
+                if (!Logica.ClassLibrary.Utilidades.Validaciones.email_bien_escrito(usuario.usu_correo))
+                {
+                    mensaje += "* Correo inválido\n";
+                }
+            }
+
+            return mensaje;
+        }
+
         private void saveUser()
         {
             try
@@ -122,6 +164,19 @@ namespace usuarios.Formularios
                 usuario.rol_id = int.Parse(cmbRol.SelectedValue.ToString());
 
                 //validaciones
+
+                string validationsMessage = validations(usuario);
+
+                if (!String.IsNullOrEmpty(validationsMessage))
+                {
+                    MessageBox.Show(validationsMessage, "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //encriptar md5
+
+                usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password);
+
 
                 bool resultSave = LogicaUsuario.saveUser(usuario);
                 if (resultSave)
@@ -139,6 +194,72 @@ namespace usuarios.Formularios
             {
 
                 MessageBox.Show("Error al guardar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void updateUser()
+        {
+            try
+            {
+                Usuario usuario = new Usuario();
+
+                usuario.usu_apellidos = txtApellidos.Text.ToUpper();
+                usuario.usu_nombres = txtNombres.Text.ToUpper();
+                usuario.usu_password = txtClave.Text;
+                usuario.usu_correo = txtCorreo.Text;
+                usuario.rol_id = int.Parse(cmbRol.SelectedValue.ToString());
+
+                //validaciones
+
+                string validationsMessage = validations(usuario);
+
+                if (!String.IsNullOrEmpty(validationsMessage))
+                {
+                    MessageBox.Show(validationsMessage, "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //encriptar md5
+
+                usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password);
+
+
+                bool resultSave = LogicaUsuario.saveUser(usuario);
+                if (resultSave)
+                {
+                    MessageBox.Show("Usuario modificado correctamente", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadUsers();
+                    limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("Error al modificar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al modificar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvUsuarios_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var codigoUsuario = dgvUsuarios.Rows[e.RowIndex].Cells["CODIGO"].Value;
+            var correoUsuario = dgvUsuarios.Rows[e.RowIndex].Cells["CORREO"].Value;
+            var apellidosUsuario = dgvUsuarios.Rows[e.RowIndex].Cells["APELLIDOS"].Value;
+            var nombresUsuario = dgvUsuarios.Rows[e.RowIndex].Cells["NOMBRES"].Value;
+            var rolUsuario = dgvUsuarios.Rows[e.RowIndex].Cells["ROL"].Value;
+
+            if (!string.IsNullOrEmpty(codigoUsuario.ToString()))
+            {
+                lblCodigo.Text = codigoUsuario.ToString();
+                txtCorreo.Text = correoUsuario.ToString();
+                txtApellidos.Text = apellidosUsuario.ToString();
+                txtNombres.Text = nombresUsuario.ToString();
+                cmbRol.SelectedIndex = cmbRol.FindString(rolUsuario.ToString());
+                //txtClave.Enabled = false;
+                //txtClavveConfirmar.Enabled = false;
             }
         }
     }

@@ -59,6 +59,7 @@ namespace usuarios.Formularios
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.Size = new System.Drawing.Size(550, 171);
             this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsuarios_RowHeaderMouseClick);
             // 
             // label1
             // 
