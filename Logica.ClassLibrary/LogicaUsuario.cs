@@ -100,6 +100,42 @@ namespace Logica.ClassLibrary
             }
         }
 
+        public static bool updateUser2(Usuario dataUsuario)
+        {
+            try
+            {
+                bool result = false;
+                dataUsuario.usu_update = DateTime.Now;
+
+                dc.ExecuteCommand("UPDATE [dbo].[Usuario] SET [usu_correo] = {0}" +
+                                  ",[usu_apellidos] = {1}" +
+                                  ",[usu_nombres] = {2}" +
+                                  ",[usu_update] = {3}" +
+                                  ",[rol_id] = {4} " +
+                                  "WHERE [usu_id] = {5}", new object[] {
+                                  dataUsuario.usu_correo,
+                                  dataUsuario.usu_apellidos,
+                                  dataUsuario.usu_nombres,
+                                  dataUsuario.usu_update,
+                                  dataUsuario.rol_id,
+                                  dataUsuario.usu_id
+                                  });
+
+                //Envia la consulta al ORM hacia la base de datos, actualizacion
+                dc.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, dc.Usuario);
+                //Commit a la base
+                dc.SubmitChanges();
+
+                result = true;
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al modificar Usuario " + ex.Message);
+            }
+        }
+
         public static bool deleteteUser(Usuario dataUsuario)
         {
             try

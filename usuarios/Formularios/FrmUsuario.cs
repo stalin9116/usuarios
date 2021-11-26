@@ -106,7 +106,15 @@ namespace usuarios.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            saveUser();
+            if (!string.IsNullOrEmpty(lblCodigo.Text))
+            {
+                updateUser();
+            }
+            else
+            {
+                saveUser();
+            }
+            
         }
 
         private string validations(Usuario usuario)
@@ -120,9 +128,12 @@ namespace usuarios.Formularios
             {
                 mensaje += "* Nombres campo obligatorio\n";
             }
-            if (string.IsNullOrEmpty(usuario.usu_password) || string.IsNullOrEmpty(txtClavveConfirmar.Text))
+            if (string.IsNullOrEmpty(lblCodigo.Text))
             {
-                mensaje += "* Clave campo obligatorio\n";
+                if (string.IsNullOrEmpty(usuario.usu_password) || string.IsNullOrEmpty(txtClavveConfirmar.Text))
+                {
+                    mensaje += "* Clave campo obligatorio\n";
+                } 
             }
             if (string.IsNullOrEmpty(usuario.usu_correo))
             {
@@ -201,39 +212,52 @@ namespace usuarios.Formularios
         {
             try
             {
-                Usuario usuario = new Usuario();
-
-                usuario.usu_apellidos = txtApellidos.Text.ToUpper();
-                usuario.usu_nombres = txtNombres.Text.ToUpper();
-                usuario.usu_password = txtClave.Text;
-                usuario.usu_correo = txtCorreo.Text;
-                usuario.rol_id = int.Parse(cmbRol.SelectedValue.ToString());
-
-                //validaciones
-
-                string validationsMessage = validations(usuario);
-
-                if (!String.IsNullOrEmpty(validationsMessage))
+                if (!string.IsNullOrEmpty(lblCodigo.Text))
                 {
-                    MessageBox.Show(validationsMessage, "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
 
-                //encriptar md5
+                    var resMessage = MessageBox.Show("Desea modificar el registro ???? ", "Sistema Vehicular", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resMessage.ToString() == "Yes")
+                    {
+                        Usuario usuario = new Usuario();
+                        //usuario = LogicaUsuario.getUserXId(Convert.ToInt32(lblCodigo.Text));
 
-                usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password);
+                        usuario.usu_id = Convert.ToInt32(lblCodigo.Text);
+                        usuario.usu_apellidos = txtApellidos.Text.ToUpper();
+                        usuario.usu_nombres = txtNombres.Text.ToUpper();
+                        usuario.usu_correo = txtCorreo.Text;
+                        usuario.rol_id = int.Parse(cmbRol.SelectedValue.ToString());
+
+                        //validaciones
+
+                        string validationsMessage = validations(usuario);
+
+                        if (!String.IsNullOrEmpty(validationsMessage))
+                        {
+                            MessageBox.Show(validationsMessage, "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        //encriptar md5
 
 
-                bool resultSave = LogicaUsuario.saveUser(usuario);
-                if (resultSave)
-                {
-                    MessageBox.Show("Usuario modificado correctamente", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadUsers();
-                    limpiar();
-                }
-                else
-                {
-                    MessageBox.Show("Error al modificar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (!string.IsNullOrEmpty(txtClave.Text))
+                        {
+                            usuario.usu_password = txtClave.Text;
+                            usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password); 
+                        }
+
+                        bool resultSave = LogicaUsuario.updateUser2(usuario);
+                        if (resultSave)
+                        {
+                            MessageBox.Show("Usuario modificado correctamente", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadUsers();
+                            limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al modificar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }  
+                    }
                 }
             }
             catch (Exception)
@@ -242,6 +266,38 @@ namespace usuarios.Formularios
                 MessageBox.Show("Error al modificar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void deleteUser()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(lblCodigo.Text))
+                {
+                    var resMessage = MessageBox.Show("Desea eliminar el registro ???? ", "Sistema Vehicular", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resMessage.ToString() == "Yes")
+                    {
+                        Usuario usuario = new Usuario();
+                        usuario = LogicaUsuario.getUserXId(Convert.ToInt32(lblCodigo.Text));
+                        if (usuario != null)
+                        {
+                            if (LogicaUsuario.deleteteUser(usuario))
+                            {
+                                MessageBox.Show("Registro eliminado correctamente");
+                                loadUsers();
+                                limpiar();
+                            }
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al eliminar el registro."); 
+            }
+        }
+
 
         private void dgvUsuarios_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -261,6 +317,11 @@ namespace usuarios.Formularios
                 //txtClave.Enabled = false;
                 //txtClavveConfirmar.Enabled = false;
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            deleteUser();
         }
     }
 }

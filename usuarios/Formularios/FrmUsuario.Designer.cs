@@ -109,6 +109,7 @@ namespace usuarios.Formularios
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // label2
             // 
@@ -223,9 +224,8 @@ namespace usuarios.Formularios
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Location = new System.Drawing.Point(150, 290);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(10, 13);
+            this.lblCodigo.Size = new System.Drawing.Size(0, 13);
             this.lblCodigo.TabIndex = 19;
-            this.lblCodigo.Text = ".";
             // 
             // FrmUsuario
             // 

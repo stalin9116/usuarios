@@ -43,18 +43,23 @@ namespace usuarios
                         //Interpolation
                         var dataUser2 = $"{ usuario.usu_nombres}  { usuario.usu_apellidos}";
 
-                        MessageBox.Show("Bienvenido al sistema\n Rol:" + usuario.Rol.rol_descripcion 
+                        MessageBox.Show("Bienvenido al sistema\n Rol:" + usuario.Rol.rol_descripcion
                         + "\nUsuario: " + dataUser2, "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         //Form1 form1 = new Form1();
                         //form1.Show();
-                        
+
 
                         Formularios.FrmUsuario frmUsuario = new Formularios.FrmUsuario();
                         frmUsuario.Show();
                         this.Hide();
 
 
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Error en usuario o clave", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -71,8 +76,9 @@ namespace usuarios
 
         }
 
-
-
-
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
