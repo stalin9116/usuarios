@@ -27,6 +27,89 @@ namespace Logica.ClassLibrary
             }
         }
 
+
+        public static List<Usuario> getUsersXCodigo(int codigo)
+        {
+            try
+            {
+                var lista = dc.Usuario.Where(data => data.usu_status == 'A'
+                                             && data.usu_id.Equals(codigo))
+                                      .OrderBy(ord => ord.usu_apellidos);
+
+                return lista.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al obtener Usuario " + ex.Message);
+            }
+        }
+
+        public static List<Usuario> getUsersXApellidos(string apellidos)
+        {
+            try
+            {
+                var lista = dc.Usuario.Where(data => data.usu_status == 'A'
+                                             && data.usu_apellidos.StartsWith(apellidos))
+                                      .OrderBy(ord => ord.usu_apellidos);
+
+                return lista.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al obtener Usuario " + ex.Message);
+            }
+        }
+
+        public static List<Usuario> getUsersXNombres(string correo)
+        {
+            try
+            {
+                var lista = dc.Usuario.Where(data => data.usu_status == 'A'
+                                             && data.usu_nombres.StartsWith(correo))
+                                      .OrderBy(ord => ord.usu_apellidos);
+
+                return lista.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al obtener Usuario " + ex.Message);
+            }
+        }
+
+        public static List<Usuario> getUsersXCorreo(string correo)
+        {
+            try
+            {
+                var lista = dc.Usuario.Where(data => data.usu_status == 'A'
+                                             && data.usu_correo.StartsWith(correo))
+                                      .OrderBy(ord => ord.usu_apellidos);
+
+                return lista.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al obtener Usuario " + ex.Message);
+            }
+        }
+
+        public static List<Usuario> getUsersXRol(string rol)
+        {
+            try
+            {
+                var lista = dc.Usuario.Where(data => data.usu_status == 'A'
+                                             && data.Rol.rol_descripcion.StartsWith(rol))
+                                      .OrderBy(ord => ord.usu_apellidos);
+
+                return lista.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al obtener Usuario " + ex.Message);
+            }
+        }
+
+
+
         public static Usuario getUserXId(int idUsuario)
         {
             try

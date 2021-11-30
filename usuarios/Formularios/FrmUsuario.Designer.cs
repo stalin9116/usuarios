@@ -49,6 +49,10 @@ namespace usuarios.Formularios
             this.label8 = new System.Windows.Forms.Label();
             this.cmbRol = new System.Windows.Forms.ComboBox();
             this.lblCodigo = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbBuscar = new System.Windows.Forms.ComboBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +118,7 @@ namespace usuarios.Formularios
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 290);
+            this.label2.Location = new System.Drawing.Point(75, 329);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 6;
@@ -123,7 +127,7 @@ namespace usuarios.Formularios
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 328);
+            this.label3.Location = new System.Drawing.Point(75, 367);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 7;
@@ -131,7 +135,7 @@ namespace usuarios.Formularios
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(150, 325);
+            this.txtCorreo.Location = new System.Drawing.Point(150, 364);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(171, 20);
             this.txtCorreo.TabIndex = 8;
@@ -139,7 +143,7 @@ namespace usuarios.Formularios
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(76, 364);
+            this.label4.Location = new System.Drawing.Point(76, 403);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 9;
@@ -147,7 +151,7 @@ namespace usuarios.Formularios
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(150, 360);
+            this.txtClave.Location = new System.Drawing.Point(150, 399);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(171, 20);
             this.txtClave.TabIndex = 10;
@@ -155,7 +159,7 @@ namespace usuarios.Formularios
             // 
             // txtClavveConfirmar
             // 
-            this.txtClavveConfirmar.Location = new System.Drawing.Point(190, 400);
+            this.txtClavveConfirmar.Location = new System.Drawing.Point(190, 439);
             this.txtClavveConfirmar.Name = "txtClavveConfirmar";
             this.txtClavveConfirmar.Size = new System.Drawing.Size(171, 20);
             this.txtClavveConfirmar.TabIndex = 12;
@@ -164,7 +168,7 @@ namespace usuarios.Formularios
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(76, 403);
+            this.label5.Location = new System.Drawing.Point(76, 442);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 13);
             this.label5.TabIndex = 11;
@@ -172,7 +176,7 @@ namespace usuarios.Formularios
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(457, 290);
+            this.txtApellidos.Location = new System.Drawing.Point(457, 329);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(171, 20);
             this.txtApellidos.TabIndex = 14;
@@ -180,7 +184,7 @@ namespace usuarios.Formularios
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 293);
+            this.label6.Location = new System.Drawing.Point(382, 332);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 13;
@@ -188,7 +192,7 @@ namespace usuarios.Formularios
             // 
             // txtNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(457, 325);
+            this.txtNombres.Location = new System.Drawing.Point(457, 364);
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(171, 20);
             this.txtNombres.TabIndex = 16;
@@ -196,7 +200,7 @@ namespace usuarios.Formularios
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(382, 328);
+            this.label7.Location = new System.Drawing.Point(382, 367);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 15;
@@ -205,7 +209,7 @@ namespace usuarios.Formularios
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(382, 364);
+            this.label8.Location = new System.Drawing.Point(382, 403);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 13);
             this.label8.TabIndex = 17;
@@ -214,7 +218,7 @@ namespace usuarios.Formularios
             // cmbRol
             // 
             this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Location = new System.Drawing.Point(457, 364);
+            this.cmbRol.Location = new System.Drawing.Point(457, 403);
             this.cmbRol.Name = "cmbRol";
             this.cmbRol.Size = new System.Drawing.Size(171, 21);
             this.cmbRol.TabIndex = 18;
@@ -222,16 +226,61 @@ namespace usuarios.Formularios
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(150, 290);
+            this.lblCodigo.Location = new System.Drawing.Point(150, 329);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(0, 13);
             this.lblCodigo.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(110, 270);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Codigo";
+            // 
+            // cmbBuscar
+            // 
+            this.cmbBuscar.FormattingEnabled = true;
+            this.cmbBuscar.Items.AddRange(new object[] {
+            "Todos",
+            "Codigo",
+            "Apellidos",
+            "Nombres",
+            "Correo",
+            "Rol"});
+            this.cmbBuscar.Location = new System.Drawing.Point(168, 267);
+            this.cmbBuscar.Name = "cmbBuscar";
+            this.cmbBuscar.Size = new System.Drawing.Size(121, 21);
+            this.cmbBuscar.TabIndex = 21;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(295, 267);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(221, 20);
+            this.txtBuscar.TabIndex = 22;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(522, 265);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 23;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // FrmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 565);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.cmbBuscar);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.label8);
@@ -253,6 +302,7 @@ namespace usuarios.Formularios
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvUsuarios);
             this.Name = "FrmUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmUsuario";
             this.Load += new System.EventHandler(this.FrmUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
@@ -283,5 +333,9 @@ namespace usuarios.Formularios
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbRol;
         private System.Windows.Forms.Label lblCodigo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

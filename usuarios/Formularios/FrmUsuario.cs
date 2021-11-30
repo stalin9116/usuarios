@@ -23,7 +23,9 @@ namespace usuarios.Formularios
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
-            loadUsers();
+            //loadUsers();
+            search("Todos");
+
             loadRol();
         }
 
@@ -33,6 +35,34 @@ namespace usuarios.Formularios
             {
                 List<Usuario> listaUsuarios = new List<Usuario>();
                 listaUsuarios = LogicaUsuario.getAllaUsers();
+                if (listaUsuarios != null && listaUsuarios.Count > 0)
+                {
+                    //Cargando los datos hacia el Datagridview
+                    dgvUsuarios.DataSource = listaUsuarios.Select(data => new
+                    {
+
+                        CODIGO = data.usu_id,
+                        APELLIDOS = data.usu_apellidos,
+                        NOMBRES = data.usu_nombres,
+                        CORREO = data.usu_correo,
+                        ROL = data.Rol.rol_descripcion
+
+                    }).ToList();
+                }
+            }
+            catch
+            {
+
+                MessageBox.Show("Error al cargar los usuarios", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void loadUsers2(List<Usuario> listaUsuarios)
+        {
+            try
+            {
                 if (listaUsuarios != null && listaUsuarios.Count > 0)
                 {
                     //Cargando los datos hacia el Datagridview
@@ -114,7 +144,7 @@ namespace usuarios.Formularios
             {
                 saveUser();
             }
-            
+
         }
 
         private string validations(Usuario usuario)
@@ -133,7 +163,7 @@ namespace usuarios.Formularios
                 if (string.IsNullOrEmpty(usuario.usu_password) || string.IsNullOrEmpty(txtClavveConfirmar.Text))
                 {
                     mensaje += "* Clave campo obligatorio\n";
-                } 
+                }
             }
             if (string.IsNullOrEmpty(usuario.usu_correo))
             {
@@ -243,7 +273,7 @@ namespace usuarios.Formularios
                         if (!string.IsNullOrEmpty(txtClave.Text))
                         {
                             usuario.usu_password = txtClave.Text;
-                            usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password); 
+                            usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password);
                         }
 
                         bool resultSave = LogicaUsuario.updateUser2(usuario);
@@ -256,7 +286,7 @@ namespace usuarios.Formularios
                         else
                         {
                             MessageBox.Show("Error al modificar usuario", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }  
+                        }
                     }
                 }
             }
@@ -294,7 +324,7 @@ namespace usuarios.Formularios
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al eliminar el registro."); 
+                MessageBox.Show("Error al eliminar el registro.");
             }
         }
 
@@ -323,5 +353,60 @@ namespace usuarios.Formularios
         {
             deleteUser();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            search(cmbBuscar.Text);
+        }
+
+        private void search(string op)
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            if (!string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                
+                string datoAbuscar = txtBuscar.Text.TrimEnd();
+
+                switch (op)
+                {
+                    case "Todos":
+                        listaUsuarios = LogicaUsuario.getAllaUsers();
+                        loadUsers2(listaUsuarios);
+                        txtBuscar.Clear();
+                        break;
+                    case "Codigo":
+                        listaUsuarios = LogicaUsuario.getUsersXCodigo(int.Parse(datoAbuscar));
+                        loadUsers2(listaUsuarios);
+                        break;
+                    case "Apellidos":
+                        listaUsuarios = LogicaUsuario.getUsersXApellidos(datoAbuscar);
+                        loadUsers2(listaUsuarios);
+                        break;
+                    case "Nombres":
+                        listaUsuarios = LogicaUsuario.getUsersXNombres(datoAbuscar);
+                        loadUsers2(listaUsuarios);
+                        break;
+                    case "Correo":
+                        listaUsuarios = LogicaUsuario.getUsersXCorreo(datoAbuscar);
+                        loadUsers2(listaUsuarios);
+                        break;
+                    case "Rol":
+                        listaUsuarios = LogicaUsuario.getUsersXRol(datoAbuscar);
+                        loadUsers2(listaUsuarios);
+                        break;
+                }
+            }
+            else
+            {
+                if (op.Equals("Todos"))
+                {
+                    listaUsuarios = LogicaUsuario.getAllaUsers();
+                    loadUsers2(listaUsuarios);
+                    txtBuscar.Clear();
+                }
+            }
+
+        }
+
     }
 }

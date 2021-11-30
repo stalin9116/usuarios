@@ -50,8 +50,8 @@ namespace usuarios
                         //form1.Show();
 
 
-                        Formularios.FrmUsuario frmUsuario = new Formularios.FrmUsuario();
-                        frmUsuario.Show();
+                        Formularios.FrmPrincipal frmPrincipal = new Formularios.FrmPrincipal();
+                        frmPrincipal.Show();
                         this.Hide();
 
 
