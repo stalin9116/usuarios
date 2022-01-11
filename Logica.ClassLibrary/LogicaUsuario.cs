@@ -219,6 +219,37 @@ namespace Logica.ClassLibrary
             }
         }
 
+        public static bool updateUser3(Usuario dataUsuario)
+        {
+            try
+            {
+                dc = new DcMantenimientoDataContext();
+                bool result = false;
+
+                var res = dc.Pcd_UpdateUser(dataUsuario.usu_id, dataUsuario.usu_correo, dataUsuario.usu_password, dataUsuario.usu_apellidos,
+                    dataUsuario.usu_nombres, dataUsuario.rol_id);
+
+                //Permite capturar el resultado del procedimiento almacenado
+                var restProcedure = res.FirstOrDefault<Pcd_UpdateUserResult>();
+                if (restProcedure.Column1 > 0)
+                {
+                    result = true;
+                }
+
+                //Commit a la base
+                dc.SubmitChanges();
+
+               
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al modificar Usuario " + ex.Message);
+            }
+        }
+
+
         public static bool deleteteUser(Usuario dataUsuario)
         {
             try

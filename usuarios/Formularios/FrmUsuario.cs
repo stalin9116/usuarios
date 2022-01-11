@@ -276,7 +276,7 @@ namespace usuarios.Formularios
                             usuario.usu_password = Logica.ClassLibrary.Utilidades.Encriptar.GetMD5(usuario.usu_password);
                         }
 
-                        bool resultSave = LogicaUsuario.updateUser2(usuario);
+                        bool resultSave = LogicaUsuario.updateUser3(usuario);
                         if (resultSave)
                         {
                             MessageBox.Show("Usuario modificado correctamente", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);

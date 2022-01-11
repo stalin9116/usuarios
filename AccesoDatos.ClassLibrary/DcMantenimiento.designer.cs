@@ -226,6 +226,13 @@ namespace AccesoDatos.ClassLibrary
 				return this.GetTable<Usuario>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Pcd_UpdateUser")]
+		public ISingleResult<Pcd_UpdateUserResult> Pcd_UpdateUser([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> codigo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string correo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string clave, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string apellidos, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombres, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> rol_id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), codigo, correo, clave, apellidos, nombres, rol_id);
+			return ((ISingleResult<Pcd_UpdateUserResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Canton")]
@@ -4739,6 +4746,32 @@ namespace AccesoDatos.ClassLibrary
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class Pcd_UpdateUserResult
+	{
+		
+		private int _Column1;
+		
+		public Pcd_UpdateUserResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Column1", DbType="Int NOT NULL")]
+		public int Column1
+		{
+			get
+			{
+				return this._Column1;
+			}
+			set
+			{
+				if ((this._Column1 != value))
+				{
+					this._Column1 = value;
+				}
 			}
 		}
 	}

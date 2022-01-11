@@ -213,4 +213,15 @@
       <Association Name="Rol_Usuario" Member="Rol" ThisKey="rol_id" OtherKey="rol_id" Type="Rol" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="dbo.Pcd_UpdateUser" Method="Pcd_UpdateUser">
+    <Parameter Name="codigo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="correo" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="clave" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="apellidos" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="nombres" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="rol_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Pcd_UpdateUserResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
