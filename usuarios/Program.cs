@@ -16,7 +16,7 @@ namespace usuarios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formularios.FrmUsuario());
+            Application.Run(new Formularios.FrmMatricula());
         }
     }
 }

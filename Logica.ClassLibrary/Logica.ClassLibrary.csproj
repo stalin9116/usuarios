@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogicaCanton.cs" />
+    <Compile Include="LogicaPersona.cs" />
+    <Compile Include="LogicaProvincia.cs" />
     <Compile Include="LogicaRol.cs" />
     <Compile Include="LogicaUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
