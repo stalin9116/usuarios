@@ -100,6 +100,32 @@ namespace usuarios.Formularios
             }
         }
 
+        private void searchVehiculo()
+        {
+            string placa = txtPlaca.Text.TrimEnd().TrimStart();
+            if (!string.IsNullOrEmpty(placa))
+            {
+                Vehiculo vehiculo = new Vehiculo();
+                vehiculo = Logica.ClassLibrary.LogicaVehiculo.getVehiculoXPlaca(placa);
+                if (vehiculo != null)
+                {
+                    lblIdVehiculo.Text = vehiculo.veh_id.ToString();
+                    //Interpolation
+                    lblVehiculoMarca.Text = $"{vehiculo.Modelo.Marca.mar_descripcion} {vehiculo.Modelo.mod_descripcion}";
+                }
+                else
+                {
+                    MessageBox.Show("Vehiculo no existe", "Sistema Matriculacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Formularios.FrmVehiculo frmVehiculo = new FrmVehiculo();
+                    frmVehiculo.Show();
+                }
+            }
+        }
+        private void btnVehiculo_Click(object sender, EventArgs e)
+        {
+            searchVehiculo();
+        }
+
         private void cmbProvincia_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbProvincia.SelectedIndex > 0)
@@ -109,10 +135,14 @@ namespace usuarios.Formularios
         }
 
         private void saveMatricula()
-        { 
-            
-        
+        {
+            // 2 imagenes - gmail outlook 
+
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

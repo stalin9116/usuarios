@@ -48,6 +48,9 @@ namespace usuarios.Formularios
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.cmbProvincia = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblVehiculoMarca = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -161,11 +164,12 @@ namespace usuarios.Formularios
             this.btnVehiculo.TabIndex = 12;
             this.btnVehiculo.Text = "Buscar Vehículo";
             this.btnVehiculo.UseVisualStyleBackColor = true;
+            this.btnVehiculo.Click += new System.EventHandler(this.btnVehiculo_Click);
             // 
             // lblIdVehiculo
             // 
             this.lblIdVehiculo.AutoSize = true;
-            this.lblIdVehiculo.Location = new System.Drawing.Point(110, 362);
+            this.lblIdVehiculo.Location = new System.Drawing.Point(467, 330);
             this.lblIdVehiculo.Name = "lblIdVehiculo";
             this.lblIdVehiculo.Size = new System.Drawing.Size(13, 13);
             this.lblIdVehiculo.TabIndex = 14;
@@ -211,11 +215,41 @@ namespace usuarios.Formularios
             this.label8.TabIndex = 18;
             this.label8.Text = "Provincia";
             // 
+            // lblVehiculoMarca
+            // 
+            this.lblVehiculoMarca.AutoSize = true;
+            this.lblVehiculoMarca.Location = new System.Drawing.Point(116, 367);
+            this.lblVehiculoMarca.Name = "lblVehiculoMarca";
+            this.lblVehiculoMarca.Size = new System.Drawing.Size(0, 13);
+            this.lblVehiculoMarca.TabIndex = 20;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(346, 392);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 21;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(175, 392);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 22;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            // 
             // FrmMatricula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 428);
+            this.ClientSize = new System.Drawing.Size(573, 440);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.lblVehiculoMarca);
             this.Controls.Add(this.cmbProvincia);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtPlaca);
@@ -264,5 +298,8 @@ namespace usuarios.Formularios
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.ComboBox cmbProvincia;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblVehiculoMarca;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

@@ -75,6 +75,9 @@ namespace AccesoDatos.ClassLibrary
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
+    partial void InsertSmtp(Smtp instance);
+    partial void UpdateSmtp(Smtp instance);
+    partial void DeleteSmtp(Smtp instance);
     #endregion
 		
 		public DcMantenimientoDataContext() : 
@@ -224,6 +227,14 @@ namespace AccesoDatos.ClassLibrary
 			get
 			{
 				return this.GetTable<Usuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Smtp> Smtp
+		{
+			get
+			{
+				return this.GetTable<Smtp>();
 			}
 		}
 		
@@ -4725,6 +4736,236 @@ namespace AccesoDatos.ClassLibrary
 						this._rol_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Rol");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Smtp")]
+	public partial class Smtp : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _smtp_codigo;
+		
+		private string _smtp_servidor;
+		
+		private System.Nullable<int> _smtp_puerto;
+		
+		private string _smtp_username;
+		
+		private string _smtp_password;
+		
+		private System.Nullable<bool> _smtp_tls;
+		
+		private System.Nullable<char> _smtp_status;
+		
+		private System.Nullable<System.DateTime> _smtp_add;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onsmtp_codigoChanging(int value);
+    partial void Onsmtp_codigoChanged();
+    partial void Onsmtp_servidorChanging(string value);
+    partial void Onsmtp_servidorChanged();
+    partial void Onsmtp_puertoChanging(System.Nullable<int> value);
+    partial void Onsmtp_puertoChanged();
+    partial void Onsmtp_usernameChanging(string value);
+    partial void Onsmtp_usernameChanged();
+    partial void Onsmtp_passwordChanging(string value);
+    partial void Onsmtp_passwordChanged();
+    partial void Onsmtp_tlsChanging(System.Nullable<bool> value);
+    partial void Onsmtp_tlsChanged();
+    partial void Onsmtp_statusChanging(System.Nullable<char> value);
+    partial void Onsmtp_statusChanged();
+    partial void Onsmtp_addChanging(System.Nullable<System.DateTime> value);
+    partial void Onsmtp_addChanged();
+    #endregion
+		
+		public Smtp()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_codigo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int smtp_codigo
+		{
+			get
+			{
+				return this._smtp_codigo;
+			}
+			set
+			{
+				if ((this._smtp_codigo != value))
+				{
+					this.Onsmtp_codigoChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_codigo = value;
+					this.SendPropertyChanged("smtp_codigo");
+					this.Onsmtp_codigoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_servidor", DbType="NVarChar(100)")]
+		public string smtp_servidor
+		{
+			get
+			{
+				return this._smtp_servidor;
+			}
+			set
+			{
+				if ((this._smtp_servidor != value))
+				{
+					this.Onsmtp_servidorChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_servidor = value;
+					this.SendPropertyChanged("smtp_servidor");
+					this.Onsmtp_servidorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_puerto", DbType="Int")]
+		public System.Nullable<int> smtp_puerto
+		{
+			get
+			{
+				return this._smtp_puerto;
+			}
+			set
+			{
+				if ((this._smtp_puerto != value))
+				{
+					this.Onsmtp_puertoChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_puerto = value;
+					this.SendPropertyChanged("smtp_puerto");
+					this.Onsmtp_puertoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_username", DbType="NVarChar(100)")]
+		public string smtp_username
+		{
+			get
+			{
+				return this._smtp_username;
+			}
+			set
+			{
+				if ((this._smtp_username != value))
+				{
+					this.Onsmtp_usernameChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_username = value;
+					this.SendPropertyChanged("smtp_username");
+					this.Onsmtp_usernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_password", DbType="NVarChar(100)")]
+		public string smtp_password
+		{
+			get
+			{
+				return this._smtp_password;
+			}
+			set
+			{
+				if ((this._smtp_password != value))
+				{
+					this.Onsmtp_passwordChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_password = value;
+					this.SendPropertyChanged("smtp_password");
+					this.Onsmtp_passwordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_tls", DbType="Bit")]
+		public System.Nullable<bool> smtp_tls
+		{
+			get
+			{
+				return this._smtp_tls;
+			}
+			set
+			{
+				if ((this._smtp_tls != value))
+				{
+					this.Onsmtp_tlsChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_tls = value;
+					this.SendPropertyChanged("smtp_tls");
+					this.Onsmtp_tlsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_status", DbType="Char(1)")]
+		public System.Nullable<char> smtp_status
+		{
+			get
+			{
+				return this._smtp_status;
+			}
+			set
+			{
+				if ((this._smtp_status != value))
+				{
+					this.Onsmtp_statusChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_status = value;
+					this.SendPropertyChanged("smtp_status");
+					this.Onsmtp_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_smtp_add", DbType="DateTime")]
+		public System.Nullable<System.DateTime> smtp_add
+		{
+			get
+			{
+				return this._smtp_add;
+			}
+			set
+			{
+				if ((this._smtp_add != value))
+				{
+					this.Onsmtp_addChanging(value);
+					this.SendPropertyChanging();
+					this._smtp_add = value;
+					this.SendPropertyChanged("smtp_add");
+					this.Onsmtp_addChanged();
 				}
 			}
 		}
