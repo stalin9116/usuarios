@@ -12,7 +12,7 @@ namespace Logica.ClassLibrary
 
         private static DcMantenimientoDataContext dc = new DcMantenimientoDataContext();
 
-        public static Smtp getVehiculoXPlaca()
+        public static Smtp getConfigEmailServer()
         {
             try
             {

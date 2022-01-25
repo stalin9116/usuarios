@@ -94,21 +94,6 @@
       <Association Name="Marca_Modelo" Member="Modelo" ThisKey="mar_id" OtherKey="mar_id" Type="Modelo" />
     </Type>
   </Table>
-  <Table Name="dbo.Matricula" Member="Matricula">
-    <Type Name="Matricula">
-      <Column Name="mat_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="mat_fechaemsion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="mat_fechacaducidad" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="mat_numeroespecie" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="valor_matricula" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
-      <Column Name="can_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="per_identificacion" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="veh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Canton_Matricula" Member="Canton" ThisKey="can_id" OtherKey="can_id" Type="Canton" IsForeignKey="true" />
-      <Association Name="Vehiculo_Matricula" Member="Vehiculo" ThisKey="veh_id" OtherKey="veh_id" Type="Vehiculo" IsForeignKey="true" />
-      <Association Name="Persona_Matricula" Member="Persona" ThisKey="per_identificacion" OtherKey="per_identificacion" Type="Persona" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Modelo" Member="Modelo">
     <Type Name="Modelo">
       <Column Name="mod_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -223,6 +208,23 @@
       <Column Name="smtp_tls" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="smtp_status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="smtp_add" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Matricula" Member="Matricula">
+    <Type Name="Matricula">
+      <Column Name="mat_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mat_fechaemsion" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="mat_fechacaducidad" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="mat_numeroespecie" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="valor_matricula" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="can_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="per_identificacion" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="veh_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mat_add" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="mat_status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Canton_Matricula" Member="Canton" ThisKey="can_id" OtherKey="can_id" Type="Canton" IsForeignKey="true" />
+      <Association Name="Persona_Matricula" Member="Persona" ThisKey="per_identificacion" OtherKey="per_identificacion" Type="Persona" IsForeignKey="true" />
+      <Association Name="Vehiculo_Matricula" Member="Vehiculo" ThisKey="veh_id" OtherKey="veh_id" Type="Vehiculo" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.Pcd_UpdateUser" Method="Pcd_UpdateUser">

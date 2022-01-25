@@ -29,10 +29,10 @@ namespace Logica.ClassLibrary.Utilidades
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(mensaje, null, MediaTypeNames.Text.Html);
 
-            LinkedResource imageHtmlBanner1 = new LinkedResource(@"C:\Vehiculos\imagen1.jpg", MediaTypeNames.Image.Jpeg);
+            LinkedResource imageHtmlBanner1 = new LinkedResource(@"C:\Plantilla\imagen1.jpg", MediaTypeNames.Image.Jpeg);
             imageHtmlBanner1.ContentId = "idBanner1";
 
-            LinkedResource imageHtmlBanner2 = new LinkedResource(@"C:\Vehiculos\imagen2.jpg", MediaTypeNames.Image.Jpeg);
+            LinkedResource imageHtmlBanner2 = new LinkedResource(@"C:\Plantilla\imagen2.jpg", MediaTypeNames.Image.Jpeg);
             imageHtmlBanner2.ContentId = "idBanner2";
 
             htmlView.LinkedResources.Add(imageHtmlBanner1);

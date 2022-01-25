@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="LogicaCanton.cs" />
     <Compile Include="LogicaEmail.cs" />
+    <Compile Include="LogicaMatricula.cs" />
     <Compile Include="LogicaPersona.cs" />
     <Compile Include="LogicaProvincia.cs" />
     <Compile Include="LogicaRol.cs" />

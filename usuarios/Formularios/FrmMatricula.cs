@@ -134,15 +134,47 @@ namespace usuarios.Formularios
             }
         }
 
-        private void saveMatricula()
+        private void guardarMatricula()
         {
-            // 2 imagenes - gmail outlook 
+            try
+            {
+                Matricula matricula = new Matricula();
 
+                matricula.mat_fechaemsion = dtpFechaEmision.Value;
+                matricula.mat_fechacaducidad = dtpFechaCaducidad.Value;
+                matricula.mat_numeroespecie = txtNumeroEspecie.Text;
+                matricula.valor_matricula = 500;
+                matricula.can_id = Convert.ToInt32(cmbCanton.SelectedValue.ToString());
+                matricula.per_identificacion = txtCedula.Text;
+                matricula.veh_id = int.Parse(lblIdVehiculo.Text);
+                bool resSaveMatricula = Logica.ClassLibrary.LogicaMatricula.saveMatricula(matricula);
+                if (resSaveMatricula)
+                {
+                    MessageBox.Show("Matricula generada correctamente", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    var persona = Logica.ClassLibrary.LogicaPersona.getPersonXIdentificacion(matricula.per_identificacion);
+
+                    string datosPersona = $"{persona.per_apellidos} {persona.per_nombres}";
+
+                    bool resEmail = Logica.ClassLibrary.LogicaMatricula.sendEmail(persona.per_correo, datosPersona, matricula.mat_fechaemsion);
+                    if (resEmail)
+                    {
+                        MessageBox.Show("Correo enviado correctamente", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar matricula", "Sistema de Matriculación Vehicular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            guardarMatricula();
         }
     }
 }

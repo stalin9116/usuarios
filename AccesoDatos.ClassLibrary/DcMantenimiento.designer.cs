@@ -48,9 +48,6 @@ namespace AccesoDatos.ClassLibrary
     partial void InsertMarca(Marca instance);
     partial void UpdateMarca(Marca instance);
     partial void DeleteMarca(Marca instance);
-    partial void InsertMatricula(Matricula instance);
-    partial void UpdateMatricula(Matricula instance);
-    partial void DeleteMatricula(Matricula instance);
     partial void InsertModelo(Modelo instance);
     partial void UpdateModelo(Modelo instance);
     partial void DeleteModelo(Modelo instance);
@@ -78,6 +75,9 @@ namespace AccesoDatos.ClassLibrary
     partial void InsertSmtp(Smtp instance);
     partial void UpdateSmtp(Smtp instance);
     partial void DeleteSmtp(Smtp instance);
+    partial void InsertMatricula(Matricula instance);
+    partial void UpdateMatricula(Matricula instance);
+    partial void DeleteMatricula(Matricula instance);
     #endregion
 		
 		public DcMantenimientoDataContext() : 
@@ -158,14 +158,6 @@ namespace AccesoDatos.ClassLibrary
 			}
 		}
 		
-		public System.Data.Linq.Table<Matricula> Matricula
-		{
-			get
-			{
-				return this.GetTable<Matricula>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Modelo> Modelo
 		{
 			get
@@ -235,6 +227,14 @@ namespace AccesoDatos.ClassLibrary
 			get
 			{
 				return this.GetTable<Smtp>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Matricula> Matricula
+		{
+			get
+			{
+				return this.GetTable<Matricula>();
 			}
 		}
 		
@@ -2307,359 +2307,6 @@ namespace AccesoDatos.ClassLibrary
 		{
 			this.SendPropertyChanging();
 			entity.Marca = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Matricula")]
-	public partial class Matricula : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _mat_id;
-		
-		private System.Nullable<System.DateTime> _mat_fechaemsion;
-		
-		private System.Nullable<System.DateTime> _mat_fechacaducidad;
-		
-		private string _mat_numeroespecie;
-		
-		private System.Nullable<decimal> _valor_matricula;
-		
-		private System.Nullable<int> _can_id;
-		
-		private string _per_identificacion;
-		
-		private System.Nullable<int> _veh_id;
-		
-		private EntityRef<Canton> _Canton;
-		
-		private EntityRef<Vehiculo> _Vehiculo;
-		
-		private EntityRef<Persona> _Persona;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onmat_idChanging(long value);
-    partial void Onmat_idChanged();
-    partial void Onmat_fechaemsionChanging(System.Nullable<System.DateTime> value);
-    partial void Onmat_fechaemsionChanged();
-    partial void Onmat_fechacaducidadChanging(System.Nullable<System.DateTime> value);
-    partial void Onmat_fechacaducidadChanged();
-    partial void Onmat_numeroespecieChanging(string value);
-    partial void Onmat_numeroespecieChanged();
-    partial void Onvalor_matriculaChanging(System.Nullable<decimal> value);
-    partial void Onvalor_matriculaChanged();
-    partial void Oncan_idChanging(System.Nullable<int> value);
-    partial void Oncan_idChanged();
-    partial void Onper_identificacionChanging(string value);
-    partial void Onper_identificacionChanged();
-    partial void Onveh_idChanging(System.Nullable<int> value);
-    partial void Onveh_idChanged();
-    #endregion
-		
-		public Matricula()
-		{
-			this._Canton = default(EntityRef<Canton>);
-			this._Vehiculo = default(EntityRef<Vehiculo>);
-			this._Persona = default(EntityRef<Persona>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long mat_id
-		{
-			get
-			{
-				return this._mat_id;
-			}
-			set
-			{
-				if ((this._mat_id != value))
-				{
-					this.Onmat_idChanging(value);
-					this.SendPropertyChanging();
-					this._mat_id = value;
-					this.SendPropertyChanged("mat_id");
-					this.Onmat_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_fechaemsion", DbType="Date")]
-		public System.Nullable<System.DateTime> mat_fechaemsion
-		{
-			get
-			{
-				return this._mat_fechaemsion;
-			}
-			set
-			{
-				if ((this._mat_fechaemsion != value))
-				{
-					this.Onmat_fechaemsionChanging(value);
-					this.SendPropertyChanging();
-					this._mat_fechaemsion = value;
-					this.SendPropertyChanged("mat_fechaemsion");
-					this.Onmat_fechaemsionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_fechacaducidad", DbType="Date")]
-		public System.Nullable<System.DateTime> mat_fechacaducidad
-		{
-			get
-			{
-				return this._mat_fechacaducidad;
-			}
-			set
-			{
-				if ((this._mat_fechacaducidad != value))
-				{
-					this.Onmat_fechacaducidadChanging(value);
-					this.SendPropertyChanging();
-					this._mat_fechacaducidad = value;
-					this.SendPropertyChanged("mat_fechacaducidad");
-					this.Onmat_fechacaducidadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_numeroespecie", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string mat_numeroespecie
-		{
-			get
-			{
-				return this._mat_numeroespecie;
-			}
-			set
-			{
-				if ((this._mat_numeroespecie != value))
-				{
-					this.Onmat_numeroespecieChanging(value);
-					this.SendPropertyChanging();
-					this._mat_numeroespecie = value;
-					this.SendPropertyChanged("mat_numeroespecie");
-					this.Onmat_numeroespecieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valor_matricula", DbType="Decimal(8,2)")]
-		public System.Nullable<decimal> valor_matricula
-		{
-			get
-			{
-				return this._valor_matricula;
-			}
-			set
-			{
-				if ((this._valor_matricula != value))
-				{
-					this.Onvalor_matriculaChanging(value);
-					this.SendPropertyChanging();
-					this._valor_matricula = value;
-					this.SendPropertyChanged("valor_matricula");
-					this.Onvalor_matriculaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_can_id", DbType="Int")]
-		public System.Nullable<int> can_id
-		{
-			get
-			{
-				return this._can_id;
-			}
-			set
-			{
-				if ((this._can_id != value))
-				{
-					if (this._Canton.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Oncan_idChanging(value);
-					this.SendPropertyChanging();
-					this._can_id = value;
-					this.SendPropertyChanged("can_id");
-					this.Oncan_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_per_identificacion", DbType="NVarChar(15)")]
-		public string per_identificacion
-		{
-			get
-			{
-				return this._per_identificacion;
-			}
-			set
-			{
-				if ((this._per_identificacion != value))
-				{
-					if (this._Persona.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onper_identificacionChanging(value);
-					this.SendPropertyChanging();
-					this._per_identificacion = value;
-					this.SendPropertyChanged("per_identificacion");
-					this.Onper_identificacionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_veh_id", DbType="Int")]
-		public System.Nullable<int> veh_id
-		{
-			get
-			{
-				return this._veh_id;
-			}
-			set
-			{
-				if ((this._veh_id != value))
-				{
-					if (this._Vehiculo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onveh_idChanging(value);
-					this.SendPropertyChanging();
-					this._veh_id = value;
-					this.SendPropertyChanged("veh_id");
-					this.Onveh_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Canton_Matricula", Storage="_Canton", ThisKey="can_id", OtherKey="can_id", IsForeignKey=true)]
-		public Canton Canton
-		{
-			get
-			{
-				return this._Canton.Entity;
-			}
-			set
-			{
-				Canton previousValue = this._Canton.Entity;
-				if (((previousValue != value) 
-							|| (this._Canton.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Canton.Entity = null;
-						previousValue.Matricula.Remove(this);
-					}
-					this._Canton.Entity = value;
-					if ((value != null))
-					{
-						value.Matricula.Add(this);
-						this._can_id = value.can_id;
-					}
-					else
-					{
-						this._can_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Canton");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Vehiculo_Matricula", Storage="_Vehiculo", ThisKey="veh_id", OtherKey="veh_id", IsForeignKey=true)]
-		public Vehiculo Vehiculo
-		{
-			get
-			{
-				return this._Vehiculo.Entity;
-			}
-			set
-			{
-				Vehiculo previousValue = this._Vehiculo.Entity;
-				if (((previousValue != value) 
-							|| (this._Vehiculo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Vehiculo.Entity = null;
-						previousValue.Matricula.Remove(this);
-					}
-					this._Vehiculo.Entity = value;
-					if ((value != null))
-					{
-						value.Matricula.Add(this);
-						this._veh_id = value.veh_id;
-					}
-					else
-					{
-						this._veh_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Vehiculo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Matricula", Storage="_Persona", ThisKey="per_identificacion", OtherKey="per_identificacion", IsForeignKey=true)]
-		public Persona Persona
-		{
-			get
-			{
-				return this._Persona.Entity;
-			}
-			set
-			{
-				Persona previousValue = this._Persona.Entity;
-				if (((previousValue != value) 
-							|| (this._Persona.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Persona.Entity = null;
-						previousValue.Matricula.Remove(this);
-					}
-					this._Persona.Entity = value;
-					if ((value != null))
-					{
-						value.Matricula.Add(this);
-						this._per_identificacion = value.per_identificacion;
-					}
-					else
-					{
-						this._per_identificacion = default(string);
-					}
-					this.SendPropertyChanged("Persona");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -4966,6 +4613,407 @@ namespace AccesoDatos.ClassLibrary
 					this._smtp_add = value;
 					this.SendPropertyChanged("smtp_add");
 					this.Onsmtp_addChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Matricula")]
+	public partial class Matricula : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _mat_id;
+		
+		private System.DateTime _mat_fechaemsion;
+		
+		private System.DateTime _mat_fechacaducidad;
+		
+		private string _mat_numeroespecie;
+		
+		private decimal _valor_matricula;
+		
+		private int _can_id;
+		
+		private string _per_identificacion;
+		
+		private int _veh_id;
+		
+		private System.DateTime _mat_add;
+		
+		private char _mat_status;
+		
+		private EntityRef<Canton> _Canton;
+		
+		private EntityRef<Persona> _Persona;
+		
+		private EntityRef<Vehiculo> _Vehiculo;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onmat_idChanging(long value);
+    partial void Onmat_idChanged();
+    partial void Onmat_fechaemsionChanging(System.DateTime value);
+    partial void Onmat_fechaemsionChanged();
+    partial void Onmat_fechacaducidadChanging(System.DateTime value);
+    partial void Onmat_fechacaducidadChanged();
+    partial void Onmat_numeroespecieChanging(string value);
+    partial void Onmat_numeroespecieChanged();
+    partial void Onvalor_matriculaChanging(decimal value);
+    partial void Onvalor_matriculaChanged();
+    partial void Oncan_idChanging(int value);
+    partial void Oncan_idChanged();
+    partial void Onper_identificacionChanging(string value);
+    partial void Onper_identificacionChanged();
+    partial void Onveh_idChanging(int value);
+    partial void Onveh_idChanged();
+    partial void Onmat_addChanging(System.DateTime value);
+    partial void Onmat_addChanged();
+    partial void Onmat_statusChanging(char value);
+    partial void Onmat_statusChanged();
+    #endregion
+		
+		public Matricula()
+		{
+			this._Canton = default(EntityRef<Canton>);
+			this._Persona = default(EntityRef<Persona>);
+			this._Vehiculo = default(EntityRef<Vehiculo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long mat_id
+		{
+			get
+			{
+				return this._mat_id;
+			}
+			set
+			{
+				if ((this._mat_id != value))
+				{
+					this.Onmat_idChanging(value);
+					this.SendPropertyChanging();
+					this._mat_id = value;
+					this.SendPropertyChanged("mat_id");
+					this.Onmat_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_fechaemsion", DbType="Date NOT NULL")]
+		public System.DateTime mat_fechaemsion
+		{
+			get
+			{
+				return this._mat_fechaemsion;
+			}
+			set
+			{
+				if ((this._mat_fechaemsion != value))
+				{
+					this.Onmat_fechaemsionChanging(value);
+					this.SendPropertyChanging();
+					this._mat_fechaemsion = value;
+					this.SendPropertyChanged("mat_fechaemsion");
+					this.Onmat_fechaemsionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_fechacaducidad", DbType="Date NOT NULL")]
+		public System.DateTime mat_fechacaducidad
+		{
+			get
+			{
+				return this._mat_fechacaducidad;
+			}
+			set
+			{
+				if ((this._mat_fechacaducidad != value))
+				{
+					this.Onmat_fechacaducidadChanging(value);
+					this.SendPropertyChanging();
+					this._mat_fechacaducidad = value;
+					this.SendPropertyChanged("mat_fechacaducidad");
+					this.Onmat_fechacaducidadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_numeroespecie", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string mat_numeroespecie
+		{
+			get
+			{
+				return this._mat_numeroespecie;
+			}
+			set
+			{
+				if ((this._mat_numeroespecie != value))
+				{
+					this.Onmat_numeroespecieChanging(value);
+					this.SendPropertyChanging();
+					this._mat_numeroespecie = value;
+					this.SendPropertyChanged("mat_numeroespecie");
+					this.Onmat_numeroespecieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_valor_matricula", DbType="Decimal(8,2) NOT NULL")]
+		public decimal valor_matricula
+		{
+			get
+			{
+				return this._valor_matricula;
+			}
+			set
+			{
+				if ((this._valor_matricula != value))
+				{
+					this.Onvalor_matriculaChanging(value);
+					this.SendPropertyChanging();
+					this._valor_matricula = value;
+					this.SendPropertyChanged("valor_matricula");
+					this.Onvalor_matriculaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_can_id", DbType="Int NOT NULL")]
+		public int can_id
+		{
+			get
+			{
+				return this._can_id;
+			}
+			set
+			{
+				if ((this._can_id != value))
+				{
+					if (this._Canton.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncan_idChanging(value);
+					this.SendPropertyChanging();
+					this._can_id = value;
+					this.SendPropertyChanged("can_id");
+					this.Oncan_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_per_identificacion", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string per_identificacion
+		{
+			get
+			{
+				return this._per_identificacion;
+			}
+			set
+			{
+				if ((this._per_identificacion != value))
+				{
+					if (this._Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onper_identificacionChanging(value);
+					this.SendPropertyChanging();
+					this._per_identificacion = value;
+					this.SendPropertyChanged("per_identificacion");
+					this.Onper_identificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_veh_id", DbType="Int NOT NULL")]
+		public int veh_id
+		{
+			get
+			{
+				return this._veh_id;
+			}
+			set
+			{
+				if ((this._veh_id != value))
+				{
+					if (this._Vehiculo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onveh_idChanging(value);
+					this.SendPropertyChanging();
+					this._veh_id = value;
+					this.SendPropertyChanged("veh_id");
+					this.Onveh_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_add", DbType="DateTime NOT NULL")]
+		public System.DateTime mat_add
+		{
+			get
+			{
+				return this._mat_add;
+			}
+			set
+			{
+				if ((this._mat_add != value))
+				{
+					this.Onmat_addChanging(value);
+					this.SendPropertyChanging();
+					this._mat_add = value;
+					this.SendPropertyChanged("mat_add");
+					this.Onmat_addChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mat_status", DbType="Char(1) NOT NULL")]
+		public char mat_status
+		{
+			get
+			{
+				return this._mat_status;
+			}
+			set
+			{
+				if ((this._mat_status != value))
+				{
+					this.Onmat_statusChanging(value);
+					this.SendPropertyChanging();
+					this._mat_status = value;
+					this.SendPropertyChanged("mat_status");
+					this.Onmat_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Canton_Matricula", Storage="_Canton", ThisKey="can_id", OtherKey="can_id", IsForeignKey=true)]
+		public Canton Canton
+		{
+			get
+			{
+				return this._Canton.Entity;
+			}
+			set
+			{
+				Canton previousValue = this._Canton.Entity;
+				if (((previousValue != value) 
+							|| (this._Canton.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Canton.Entity = null;
+						previousValue.Matricula.Remove(this);
+					}
+					this._Canton.Entity = value;
+					if ((value != null))
+					{
+						value.Matricula.Add(this);
+						this._can_id = value.can_id;
+					}
+					else
+					{
+						this._can_id = default(int);
+					}
+					this.SendPropertyChanged("Canton");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Matricula", Storage="_Persona", ThisKey="per_identificacion", OtherKey="per_identificacion", IsForeignKey=true)]
+		public Persona Persona
+		{
+			get
+			{
+				return this._Persona.Entity;
+			}
+			set
+			{
+				Persona previousValue = this._Persona.Entity;
+				if (((previousValue != value) 
+							|| (this._Persona.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Persona.Entity = null;
+						previousValue.Matricula.Remove(this);
+					}
+					this._Persona.Entity = value;
+					if ((value != null))
+					{
+						value.Matricula.Add(this);
+						this._per_identificacion = value.per_identificacion;
+					}
+					else
+					{
+						this._per_identificacion = default(string);
+					}
+					this.SendPropertyChanged("Persona");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Vehiculo_Matricula", Storage="_Vehiculo", ThisKey="veh_id", OtherKey="veh_id", IsForeignKey=true)]
+		public Vehiculo Vehiculo
+		{
+			get
+			{
+				return this._Vehiculo.Entity;
+			}
+			set
+			{
+				Vehiculo previousValue = this._Vehiculo.Entity;
+				if (((previousValue != value) 
+							|| (this._Vehiculo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Vehiculo.Entity = null;
+						previousValue.Matricula.Remove(this);
+					}
+					this._Vehiculo.Entity = value;
+					if ((value != null))
+					{
+						value.Matricula.Add(this);
+						this._veh_id = value.veh_id;
+					}
+					else
+					{
+						this._veh_id = default(int);
+					}
+					this.SendPropertyChanged("Vehiculo");
 				}
 			}
 		}
