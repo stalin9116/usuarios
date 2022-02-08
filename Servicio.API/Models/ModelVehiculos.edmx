@@ -1,0 +1,1221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbMatriculaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="can_id" />
+          </Key>
+          <Property Name="can_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="can_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="can_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="can_add" Type="datetime" Nullable="false" />
+          <Property Name="can_update" Type="datetime" Nullable="false" />
+          <Property Name="can_delete" Type="datetime" />
+          <Property Name="pro_id" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="cla_id" />
+          </Key>
+          <Property Name="cla_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cla_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="cla_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="cla_add" Type="datetime" Nullable="false" />
+          <Property Name="cla_update" Type="datetime" />
+          <Property Name="cla_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="col_id" />
+          </Key>
+          <Property Name="col_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="col_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="col_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="col_add" Type="datetime" Nullable="false" />
+          <Property Name="col_update" Type="datetime" />
+          <Property Name="col_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Discapacidad">
+          <Key>
+            <PropertyRef Name="dis_id" />
+          </Key>
+          <Property Name="dis_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dis_porcentaje" Type="tinyint" Nullable="false" />
+          <Property Name="dis_fechacarnet" Type="date" Nullable="false" />
+          <Property Name="dis_observacion" Type="nvarchar" MaxLength="200" />
+          <Property Name="dis_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="dis_add" Type="datetime" Nullable="false" />
+          <Property Name="dis_update" Type="datetime" />
+          <Property Name="dis_delete" Type="datetime" />
+          <Property Name="tdi_id" Type="tinyint" />
+          <Property Name="per_identificacion" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="mar_id" />
+          </Key>
+          <Property Name="mar_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mar_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="mar_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="mar_add" Type="datetime" Nullable="false" />
+          <Property Name="mar_update" Type="datetime" />
+          <Property Name="mar_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Matricula">
+          <Key>
+            <PropertyRef Name="mat_id" />
+          </Key>
+          <Property Name="mat_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mat_fechaemsion" Type="date" Nullable="false" />
+          <Property Name="mat_fechacaducidad" Type="date" Nullable="false" />
+          <Property Name="mat_numeroespecie" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="valor_matricula" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="can_id" Type="int" Nullable="false" />
+          <Property Name="per_identificacion" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="veh_id" Type="int" Nullable="false" />
+          <Property Name="mat_add" Type="datetime" Nullable="false" />
+          <Property Name="mat_status" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="mod_id" />
+          </Key>
+          <Property Name="mod_id" Type="int" Nullable="false" />
+          <Property Name="mod_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="mod_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="mod_add" Type="datetime" Nullable="false" />
+          <Property Name="mod_update" Type="datetime" />
+          <Property Name="mod_delete" Type="datetime" />
+          <Property Name="mar_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="pai_id" />
+          </Key>
+          <Property Name="pai_id" Type="smallint" Nullable="false" />
+          <Property Name="pai_nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="pai_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="pai_add" Type="datetime" Nullable="false" />
+          <Property Name="pai_update" Type="datetime" />
+          <Property Name="pai_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="per_identificacion" />
+          </Key>
+          <Property Name="per_identificacion" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="per_tipoidentificacion" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="per_apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="per_nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="per_fechanacimiento" Type="date" Nullable="false" />
+          <Property Name="per_direccion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="per_telefono" Type="nvarchar" MaxLength="12" />
+          <Property Name="per_celular" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="per_tiposangre" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="per_correo" Type="nvarchar" MaxLength="100" />
+          <Property Name="per_genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="per_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="per_add" Type="datetime" Nullable="false" />
+          <Property Name="per_update" Type="datetime" />
+          <Property Name="per_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="pro_id" />
+          </Key>
+          <Property Name="pro_id" Type="tinyint" Nullable="false" />
+          <Property Name="pro_nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="pro_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="pro_add" Type="datetime" />
+          <Property Name="pro_update" Type="datetime" />
+          <Property Name="pro_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rol_descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rol_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="rol_add" Type="datetime" Nullable="false" />
+          <Property Name="rol_update" Type="datetime" />
+          <Property Name="rol_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Smtp">
+          <Key>
+            <PropertyRef Name="smtp_codigo" />
+          </Key>
+          <Property Name="smtp_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="smtp_servidor" Type="nvarchar" MaxLength="100" />
+          <Property Name="smtp_puerto" Type="int" />
+          <Property Name="smtp_username" Type="nvarchar" MaxLength="100" />
+          <Property Name="smtp_password" Type="nvarchar" MaxLength="100" />
+          <Property Name="smtp_tls" Type="bit" />
+          <Property Name="smtp_status" Type="char" MaxLength="1" />
+          <Property Name="smtp_add" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="tip_id" />
+          </Key>
+          <Property Name="tip_id" Type="int" Nullable="false" />
+          <Property Name="tip_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tip_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tip_add" Type="datetime" Nullable="false" />
+          <Property Name="tip_update" Type="datetime" />
+          <Property Name="tip_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoDiscapacidad">
+          <Key>
+            <PropertyRef Name="tdi_id" />
+          </Key>
+          <Property Name="tdi_id" Type="tinyint" Nullable="false" />
+          <Property Name="tdi_descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tdi_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="tdi_add" Type="datetime" Nullable="false" />
+          <Property Name="tdi_update" Type="datetime" />
+          <Property Name="tdi_delete" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="usu_add" Type="datetime" Nullable="false" />
+          <Property Name="usu_update" Type="datetime" />
+          <Property Name="usu_delete" Type="datetime" />
+          <Property Name="rol_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="veh_id" />
+          </Key>
+          <Property Name="veh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="veh_placaanterior" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="veh_placaactual" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="veh_chasis" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="veh_motor" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="veh_fechacompra" Type="datetime" Nullable="false" />
+          <Property Name="veh_pasajeros" Type="tinyint" Nullable="false" />
+          <Property Name="veh_tonelaje" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="veh_carroceria" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="veh_combustible" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="veh_observacion" Type="nvarchar" MaxLength="300" />
+          <Property Name="veh_anio" Type="smallint" Nullable="false" />
+          <Property Name="veh_cilindraje" Type="smallint" Nullable="false" />
+          <Property Name="veh_status" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="veh_add" Type="datetime" Nullable="false" />
+          <Property Name="veh_update" Type="datetime" />
+          <Property Name="veh_delete" Type="datetime" />
+          <Property Name="tip_id" Type="int" />
+          <Property Name="col_id" Type="int" />
+          <Property Name="mod_id" Type="int" />
+          <Property Name="pai_id" Type="smallint" />
+          <Property Name="cla_id" Type="int" />
+        </EntityType>
+        <Association Name="Relationship13">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="tip_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="tip_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship14">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="col_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="col_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship15">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="mar_id" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="mar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship16">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="mod_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="mod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship17">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="can_id" />
+            </Principal>
+            <Dependent Role="Matricula">
+              <PropertyRef Name="can_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship18">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="pro_id" />
+            </Principal>
+            <Dependent Role="Canton">
+              <PropertyRef Name="pro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship19">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="per_identificacion" />
+            </Principal>
+            <Dependent Role="Matricula">
+              <PropertyRef Name="per_identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship20">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="veh_id" />
+            </Principal>
+            <Dependent Role="Matricula">
+              <PropertyRef Name="veh_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship21">
+          <End Role="TipoDiscapacidad" Type="Self.TipoDiscapacidad" Multiplicity="0..1" />
+          <End Role="Discapacidad" Type="Self.Discapacidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDiscapacidad">
+              <PropertyRef Name="tdi_id" />
+            </Principal>
+            <Dependent Role="Discapacidad">
+              <PropertyRef Name="tdi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship22">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Discapacidad" Type="Self.Discapacidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="per_identificacion" />
+            </Principal>
+            <Dependent Role="Discapacidad">
+              <PropertyRef Name="per_identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship23">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="pai_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="pai_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship25">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="cla_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="cla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship26">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="col_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="col_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipUsuarioROl">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbMatriculaModelStoreContainer">
+          <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discapacidad" EntityType="Self.Discapacidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Smtp" EntityType="Self.Smtp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDiscapacidad" EntityType="Self.TipoDiscapacidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Relationship13" Association="Self.Relationship13">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship14" Association="Self.Relationship14">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship15" Association="Self.Relationship15">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship16" Association="Self.Relationship16">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship17" Association="Self.Relationship17">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Matricula" EntitySet="Matricula" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship18" Association="Self.Relationship18">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Canton" EntitySet="Canton" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship19" Association="Self.Relationship19">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Matricula" EntitySet="Matricula" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship20" Association="Self.Relationship20">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Matricula" EntitySet="Matricula" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship21" Association="Self.Relationship21">
+            <End Role="TipoDiscapacidad" EntitySet="TipoDiscapacidad" />
+            <End Role="Discapacidad" EntitySet="Discapacidad" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship22" Association="Self.Relationship22">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Discapacidad" EntitySet="Discapacidad" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship23" Association="Self.Relationship23">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship25" Association="Self.Relationship25">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship26" Association="Self.Relationship26">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipUsuarioROl" Association="Self.RelationshipUsuarioROl">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbMatriculaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="can_id" />
+          </Key>
+          <Property Name="can_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="can_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="can_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="can_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="can_update" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="can_delete" Type="DateTime" Precision="3" />
+          <Property Name="pro_id" Type="Byte" />
+          <NavigationProperty Name="Matricula" Relationship="Self.Relationship17" FromRole="Canton" ToRole="Matricula" />
+          <NavigationProperty Name="Provincia" Relationship="Self.Relationship18" FromRole="Canton" ToRole="Provincia" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="cla_id" />
+          </Key>
+          <Property Name="cla_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cla_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cla_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cla_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cla_update" Type="DateTime" Precision="3" />
+          <Property Name="cla_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Relationship25" FromRole="Clase" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="col_id" />
+          </Key>
+          <Property Name="col_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="col_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="col_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="col_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="col_update" Type="DateTime" Precision="3" />
+          <Property Name="col_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Relationship14" FromRole="Color" ToRole="Vehiculo" />
+          <NavigationProperty Name="Vehiculo1" Relationship="Self.Relationship26" FromRole="Color" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Discapacidad">
+          <Key>
+            <PropertyRef Name="dis_id" />
+          </Key>
+          <Property Name="dis_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dis_porcentaje" Type="Byte" Nullable="false" />
+          <Property Name="dis_fechacarnet" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dis_observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="dis_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dis_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dis_update" Type="DateTime" Precision="3" />
+          <Property Name="dis_delete" Type="DateTime" Precision="3" />
+          <Property Name="tdi_id" Type="Byte" />
+          <Property Name="per_identificacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TipoDiscapacidad" Relationship="Self.Relationship21" FromRole="Discapacidad" ToRole="TipoDiscapacidad" />
+          <NavigationProperty Name="Persona" Relationship="Self.Relationship22" FromRole="Discapacidad" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="mar_id" />
+          </Key>
+          <Property Name="mar_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mar_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mar_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mar_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mar_update" Type="DateTime" Precision="3" />
+          <Property Name="mar_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Modelo" Relationship="Self.Relationship15" FromRole="Marca" ToRole="Modelo" />
+        </EntityType>
+        <EntityType Name="Matricula">
+          <Key>
+            <PropertyRef Name="mat_id" />
+          </Key>
+          <Property Name="mat_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mat_fechaemsion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="mat_fechacaducidad" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="mat_numeroespecie" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="valor_matricula" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="can_id" Type="Int32" Nullable="false" />
+          <Property Name="per_identificacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="veh_id" Type="Int32" Nullable="false" />
+          <Property Name="mat_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mat_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Canton" Relationship="Self.Relationship17" FromRole="Matricula" ToRole="Canton" />
+          <NavigationProperty Name="Persona" Relationship="Self.Relationship19" FromRole="Matricula" ToRole="Persona" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Relationship20" FromRole="Matricula" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="mod_id" />
+          </Key>
+          <Property Name="mod_id" Type="Int32" Nullable="false" />
+          <Property Name="mod_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mod_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mod_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mod_update" Type="DateTime" Precision="3" />
+          <Property Name="mod_delete" Type="DateTime" Precision="3" />
+          <Property Name="mar_id" Type="Int32" />
+          <NavigationProperty Name="Marca" Relationship="Self.Relationship15" FromRole="Modelo" ToRole="Marca" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Relationship16" FromRole="Modelo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="pai_id" />
+          </Key>
+          <Property Name="pai_id" Type="Int16" Nullable="false" />
+          <Property Name="pai_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pai_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="pai_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="pai_update" Type="DateTime" Precision="3" />
+          <Property Name="pai_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Relationship23" FromRole="Pais" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="per_identificacion" />
+          </Key>
+          <Property Name="per_identificacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_tipoidentificacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="per_apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_fechanacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="per_direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="per_celular" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_tiposangre" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="per_genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="per_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="per_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="per_update" Type="DateTime" Precision="3" />
+          <Property Name="per_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Discapacidad" Relationship="Self.Relationship22" FromRole="Persona" ToRole="Discapacidad" />
+          <NavigationProperty Name="Matricula" Relationship="Self.Relationship19" FromRole="Persona" ToRole="Matricula" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="pro_id" />
+          </Key>
+          <Property Name="pro_id" Type="Byte" Nullable="false" />
+          <Property Name="pro_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pro_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="pro_add" Type="DateTime" Precision="3" />
+          <Property Name="pro_update" Type="DateTime" Precision="3" />
+          <Property Name="pro_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Canton" Relationship="Self.Relationship18" FromRole="Provincia" ToRole="Canton" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rol_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="rol_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rol_update" Type="DateTime" Precision="3" />
+          <Property Name="rol_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="Self.RelationshipUsuarioROl" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Smtp">
+          <Key>
+            <PropertyRef Name="smtp_codigo" />
+          </Key>
+          <Property Name="smtp_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="smtp_servidor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="smtp_puerto" Type="Int32" />
+          <Property Name="smtp_username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="smtp_password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="smtp_tls" Type="Boolean" />
+          <Property Name="smtp_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="smtp_add" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="tip_id" />
+          </Key>
+          <Property Name="tip_id" Type="Int32" Nullable="false" />
+          <Property Name="tip_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tip_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tip_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tip_update" Type="DateTime" Precision="3" />
+          <Property Name="tip_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Relationship13" FromRole="Tipo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="TipoDiscapacidad">
+          <Key>
+            <PropertyRef Name="tdi_id" />
+          </Key>
+          <Property Name="tdi_id" Type="Byte" Nullable="false" />
+          <Property Name="tdi_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tdi_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tdi_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tdi_update" Type="DateTime" Precision="3" />
+          <Property Name="tdi_delete" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Discapacidad" Relationship="Self.Relationship21" FromRole="TipoDiscapacidad" ToRole="Discapacidad" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usu_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usu_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usu_update" Type="DateTime" Precision="3" />
+          <Property Name="usu_delete" Type="DateTime" Precision="3" />
+          <Property Name="rol_id" Type="Int32" />
+          <NavigationProperty Name="Rol" Relationship="Self.RelationshipUsuarioROl" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="veh_id" />
+          </Key>
+          <Property Name="veh_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="veh_placaanterior" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="veh_placaactual" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="veh_chasis" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="veh_motor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="veh_fechacompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="veh_pasajeros" Type="Byte" Nullable="false" />
+          <Property Name="veh_tonelaje" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="veh_carroceria" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="veh_combustible" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="veh_observacion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="veh_anio" Type="Int16" Nullable="false" />
+          <Property Name="veh_cilindraje" Type="Int16" Nullable="false" />
+          <Property Name="veh_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="veh_add" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="veh_update" Type="DateTime" Precision="3" />
+          <Property Name="veh_delete" Type="DateTime" Precision="3" />
+          <Property Name="tip_id" Type="Int32" />
+          <Property Name="col_id" Type="Int32" />
+          <Property Name="mod_id" Type="Int32" />
+          <Property Name="pai_id" Type="Int16" />
+          <Property Name="cla_id" Type="Int32" />
+          <NavigationProperty Name="Clase" Relationship="Self.Relationship25" FromRole="Vehiculo" ToRole="Clase" />
+          <NavigationProperty Name="Color" Relationship="Self.Relationship14" FromRole="Vehiculo" ToRole="Color" />
+          <NavigationProperty Name="Color1" Relationship="Self.Relationship26" FromRole="Vehiculo" ToRole="Color" />
+          <NavigationProperty Name="Matricula" Relationship="Self.Relationship20" FromRole="Vehiculo" ToRole="Matricula" />
+          <NavigationProperty Name="Modelo" Relationship="Self.Relationship16" FromRole="Vehiculo" ToRole="Modelo" />
+          <NavigationProperty Name="Pais" Relationship="Self.Relationship23" FromRole="Vehiculo" ToRole="Pais" />
+          <NavigationProperty Name="Tipo" Relationship="Self.Relationship13" FromRole="Vehiculo" ToRole="Tipo" />
+        </EntityType>
+        <Association Name="Relationship17">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="can_id" />
+            </Principal>
+            <Dependent Role="Matricula">
+              <PropertyRef Name="can_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship18">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="pro_id" />
+            </Principal>
+            <Dependent Role="Canton">
+              <PropertyRef Name="pro_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship25">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="cla_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="cla_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship14">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="col_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="col_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship26">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="col_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="col_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship21">
+          <End Role="TipoDiscapacidad" Type="Self.TipoDiscapacidad" Multiplicity="0..1" />
+          <End Role="Discapacidad" Type="Self.Discapacidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDiscapacidad">
+              <PropertyRef Name="tdi_id" />
+            </Principal>
+            <Dependent Role="Discapacidad">
+              <PropertyRef Name="tdi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship22">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Discapacidad" Type="Self.Discapacidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="per_identificacion" />
+            </Principal>
+            <Dependent Role="Discapacidad">
+              <PropertyRef Name="per_identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship15">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="mar_id" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="mar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship19">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="per_identificacion" />
+            </Principal>
+            <Dependent Role="Matricula">
+              <PropertyRef Name="per_identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship20">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="veh_id" />
+            </Principal>
+            <Dependent Role="Matricula">
+              <PropertyRef Name="veh_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship16">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="mod_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="mod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship23">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="pai_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="pai_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipUsuarioROl">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship13">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="tip_id" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="tip_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMATRICULAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Canton" EntityType="Self.Canton" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" />
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="Discapacidad" EntityType="Self.Discapacidad" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Matricula" EntityType="Self.Matricula" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="Smtp" EntityType="Self.Smtp" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+          <EntitySet Name="TipoDiscapacidad" EntityType="Self.TipoDiscapacidad" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
+          <AssociationSet Name="Relationship17" Association="Self.Relationship17">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Matricula" EntitySet="Matricula" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship18" Association="Self.Relationship18">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Canton" EntitySet="Canton" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship25" Association="Self.Relationship25">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship14" Association="Self.Relationship14">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship26" Association="Self.Relationship26">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship21" Association="Self.Relationship21">
+            <End Role="TipoDiscapacidad" EntitySet="TipoDiscapacidad" />
+            <End Role="Discapacidad" EntitySet="Discapacidad" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship22" Association="Self.Relationship22">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Discapacidad" EntitySet="Discapacidad" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship15" Association="Self.Relationship15">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship19" Association="Self.Relationship19">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Matricula" EntitySet="Matricula" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship20" Association="Self.Relationship20">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Matricula" EntitySet="Matricula" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship16" Association="Self.Relationship16">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship23" Association="Self.Relationship23">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipUsuarioROl" Association="Self.RelationshipUsuarioROl">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship13" Association="Self.Relationship13">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbMatriculaModelStoreContainer" CdmEntityContainer="DBMATRICULAEntities">
+          <EntitySetMapping Name="Canton">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Canton">
+              <MappingFragment StoreEntitySet="Canton">
+                <ScalarProperty Name="can_id" ColumnName="can_id" />
+                <ScalarProperty Name="can_nombre" ColumnName="can_nombre" />
+                <ScalarProperty Name="can_status" ColumnName="can_status" />
+                <ScalarProperty Name="can_add" ColumnName="can_add" />
+                <ScalarProperty Name="can_update" ColumnName="can_update" />
+                <ScalarProperty Name="can_delete" ColumnName="can_delete" />
+                <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clase">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Clase">
+              <MappingFragment StoreEntitySet="Clase">
+                <ScalarProperty Name="cla_id" ColumnName="cla_id" />
+                <ScalarProperty Name="cla_descripcion" ColumnName="cla_descripcion" />
+                <ScalarProperty Name="cla_status" ColumnName="cla_status" />
+                <ScalarProperty Name="cla_add" ColumnName="cla_add" />
+                <ScalarProperty Name="cla_update" ColumnName="cla_update" />
+                <ScalarProperty Name="cla_delete" ColumnName="cla_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="col_id" ColumnName="col_id" />
+                <ScalarProperty Name="col_nombre" ColumnName="col_nombre" />
+                <ScalarProperty Name="col_status" ColumnName="col_status" />
+                <ScalarProperty Name="col_add" ColumnName="col_add" />
+                <ScalarProperty Name="col_update" ColumnName="col_update" />
+                <ScalarProperty Name="col_delete" ColumnName="col_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discapacidad">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Discapacidad">
+              <MappingFragment StoreEntitySet="Discapacidad">
+                <ScalarProperty Name="dis_id" ColumnName="dis_id" />
+                <ScalarProperty Name="dis_porcentaje" ColumnName="dis_porcentaje" />
+                <ScalarProperty Name="dis_fechacarnet" ColumnName="dis_fechacarnet" />
+                <ScalarProperty Name="dis_observacion" ColumnName="dis_observacion" />
+                <ScalarProperty Name="dis_status" ColumnName="dis_status" />
+                <ScalarProperty Name="dis_add" ColumnName="dis_add" />
+                <ScalarProperty Name="dis_update" ColumnName="dis_update" />
+                <ScalarProperty Name="dis_delete" ColumnName="dis_delete" />
+                <ScalarProperty Name="tdi_id" ColumnName="tdi_id" />
+                <ScalarProperty Name="per_identificacion" ColumnName="per_identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+                <ScalarProperty Name="mar_descripcion" ColumnName="mar_descripcion" />
+                <ScalarProperty Name="mar_status" ColumnName="mar_status" />
+                <ScalarProperty Name="mar_add" ColumnName="mar_add" />
+                <ScalarProperty Name="mar_update" ColumnName="mar_update" />
+                <ScalarProperty Name="mar_delete" ColumnName="mar_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matricula">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Matricula">
+              <MappingFragment StoreEntitySet="Matricula">
+                <ScalarProperty Name="mat_id" ColumnName="mat_id" />
+                <ScalarProperty Name="mat_fechaemsion" ColumnName="mat_fechaemsion" />
+                <ScalarProperty Name="mat_fechacaducidad" ColumnName="mat_fechacaducidad" />
+                <ScalarProperty Name="mat_numeroespecie" ColumnName="mat_numeroespecie" />
+                <ScalarProperty Name="valor_matricula" ColumnName="valor_matricula" />
+                <ScalarProperty Name="can_id" ColumnName="can_id" />
+                <ScalarProperty Name="per_identificacion" ColumnName="per_identificacion" />
+                <ScalarProperty Name="veh_id" ColumnName="veh_id" />
+                <ScalarProperty Name="mat_add" ColumnName="mat_add" />
+                <ScalarProperty Name="mat_status" ColumnName="mat_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelo">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Modelo">
+              <MappingFragment StoreEntitySet="Modelo">
+                <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+                <ScalarProperty Name="mod_descripcion" ColumnName="mod_descripcion" />
+                <ScalarProperty Name="mod_status" ColumnName="mod_status" />
+                <ScalarProperty Name="mod_add" ColumnName="mod_add" />
+                <ScalarProperty Name="mod_update" ColumnName="mod_update" />
+                <ScalarProperty Name="mod_delete" ColumnName="mod_delete" />
+                <ScalarProperty Name="mar_id" ColumnName="mar_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="pai_id" ColumnName="pai_id" />
+                <ScalarProperty Name="pai_nombre" ColumnName="pai_nombre" />
+                <ScalarProperty Name="pai_status" ColumnName="pai_status" />
+                <ScalarProperty Name="pai_add" ColumnName="pai_add" />
+                <ScalarProperty Name="pai_update" ColumnName="pai_update" />
+                <ScalarProperty Name="pai_delete" ColumnName="pai_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="per_identificacion" ColumnName="per_identificacion" />
+                <ScalarProperty Name="per_tipoidentificacion" ColumnName="per_tipoidentificacion" />
+                <ScalarProperty Name="per_apellidos" ColumnName="per_apellidos" />
+                <ScalarProperty Name="per_nombres" ColumnName="per_nombres" />
+                <ScalarProperty Name="per_fechanacimiento" ColumnName="per_fechanacimiento" />
+                <ScalarProperty Name="per_direccion" ColumnName="per_direccion" />
+                <ScalarProperty Name="per_telefono" ColumnName="per_telefono" />
+                <ScalarProperty Name="per_celular" ColumnName="per_celular" />
+                <ScalarProperty Name="per_tiposangre" ColumnName="per_tiposangre" />
+                <ScalarProperty Name="per_correo" ColumnName="per_correo" />
+                <ScalarProperty Name="per_genero" ColumnName="per_genero" />
+                <ScalarProperty Name="per_status" ColumnName="per_status" />
+                <ScalarProperty Name="per_add" ColumnName="per_add" />
+                <ScalarProperty Name="per_update" ColumnName="per_update" />
+                <ScalarProperty Name="per_delete" ColumnName="per_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+                <ScalarProperty Name="pro_nombre" ColumnName="pro_nombre" />
+                <ScalarProperty Name="pro_status" ColumnName="pro_status" />
+                <ScalarProperty Name="pro_add" ColumnName="pro_add" />
+                <ScalarProperty Name="pro_update" ColumnName="pro_update" />
+                <ScalarProperty Name="pro_delete" ColumnName="pro_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_descripcion" ColumnName="rol_descripcion" />
+                <ScalarProperty Name="rol_status" ColumnName="rol_status" />
+                <ScalarProperty Name="rol_add" ColumnName="rol_add" />
+                <ScalarProperty Name="rol_update" ColumnName="rol_update" />
+                <ScalarProperty Name="rol_delete" ColumnName="rol_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Smtp">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Smtp">
+              <MappingFragment StoreEntitySet="Smtp">
+                <ScalarProperty Name="smtp_codigo" ColumnName="smtp_codigo" />
+                <ScalarProperty Name="smtp_servidor" ColumnName="smtp_servidor" />
+                <ScalarProperty Name="smtp_puerto" ColumnName="smtp_puerto" />
+                <ScalarProperty Name="smtp_username" ColumnName="smtp_username" />
+                <ScalarProperty Name="smtp_password" ColumnName="smtp_password" />
+                <ScalarProperty Name="smtp_tls" ColumnName="smtp_tls" />
+                <ScalarProperty Name="smtp_status" ColumnName="smtp_status" />
+                <ScalarProperty Name="smtp_add" ColumnName="smtp_add" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="tip_id" ColumnName="tip_id" />
+                <ScalarProperty Name="tip_descripcion" ColumnName="tip_descripcion" />
+                <ScalarProperty Name="tip_status" ColumnName="tip_status" />
+                <ScalarProperty Name="tip_add" ColumnName="tip_add" />
+                <ScalarProperty Name="tip_update" ColumnName="tip_update" />
+                <ScalarProperty Name="tip_delete" ColumnName="tip_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDiscapacidad">
+            <EntityTypeMapping TypeName="DbMatriculaModel.TipoDiscapacidad">
+              <MappingFragment StoreEntitySet="TipoDiscapacidad">
+                <ScalarProperty Name="tdi_id" ColumnName="tdi_id" />
+                <ScalarProperty Name="tdi_descripcion" ColumnName="tdi_descripcion" />
+                <ScalarProperty Name="tdi_status" ColumnName="tdi_status" />
+                <ScalarProperty Name="tdi_add" ColumnName="tdi_add" />
+                <ScalarProperty Name="tdi_update" ColumnName="tdi_update" />
+                <ScalarProperty Name="tdi_delete" ColumnName="tdi_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+                <ScalarProperty Name="usu_password" ColumnName="usu_password" />
+                <ScalarProperty Name="usu_apellidos" ColumnName="usu_apellidos" />
+                <ScalarProperty Name="usu_nombres" ColumnName="usu_nombres" />
+                <ScalarProperty Name="usu_status" ColumnName="usu_status" />
+                <ScalarProperty Name="usu_add" ColumnName="usu_add" />
+                <ScalarProperty Name="usu_update" ColumnName="usu_update" />
+                <ScalarProperty Name="usu_delete" ColumnName="usu_delete" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo">
+            <EntityTypeMapping TypeName="DbMatriculaModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="veh_id" ColumnName="veh_id" />
+                <ScalarProperty Name="veh_placaanterior" ColumnName="veh_placaanterior" />
+                <ScalarProperty Name="veh_placaactual" ColumnName="veh_placaactual" />
+                <ScalarProperty Name="veh_chasis" ColumnName="veh_chasis" />
+                <ScalarProperty Name="veh_motor" ColumnName="veh_motor" />
+                <ScalarProperty Name="veh_fechacompra" ColumnName="veh_fechacompra" />
+                <ScalarProperty Name="veh_pasajeros" ColumnName="veh_pasajeros" />
+                <ScalarProperty Name="veh_tonelaje" ColumnName="veh_tonelaje" />
+                <ScalarProperty Name="veh_carroceria" ColumnName="veh_carroceria" />
+                <ScalarProperty Name="veh_combustible" ColumnName="veh_combustible" />
+                <ScalarProperty Name="veh_observacion" ColumnName="veh_observacion" />
+                <ScalarProperty Name="veh_anio" ColumnName="veh_anio" />
+                <ScalarProperty Name="veh_cilindraje" ColumnName="veh_cilindraje" />
+                <ScalarProperty Name="veh_status" ColumnName="veh_status" />
+                <ScalarProperty Name="veh_add" ColumnName="veh_add" />
+                <ScalarProperty Name="veh_update" ColumnName="veh_update" />
+                <ScalarProperty Name="veh_delete" ColumnName="veh_delete" />
+                <ScalarProperty Name="tip_id" ColumnName="tip_id" />
+                <ScalarProperty Name="col_id" ColumnName="col_id" />
+                <ScalarProperty Name="mod_id" ColumnName="mod_id" />
+                <ScalarProperty Name="pai_id" ColumnName="pai_id" />
+                <ScalarProperty Name="cla_id" ColumnName="cla_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

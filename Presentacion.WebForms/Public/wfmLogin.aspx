@@ -52,7 +52,7 @@
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
 						<asp:TextBox ID="txtUsername" runat="server" CssClass="input100"></asp:TextBox>
-						<%--<input class="input100" type="text" name="username" >--%>
+						
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -63,7 +63,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<%--<input class="input100" type="password" name="pass" >--%>
+						
 						<asp:TextBox ID="txtPassword" runat="server" CssClass="input100" TextMode="Password"></asp:TextBox>
 
 						<span class="focus-input100"></span>
@@ -86,9 +86,7 @@
 
 					<div class="container-login100-form-btn">
 						<asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="login100-form-btn" OnClick="btnLogin_Click" />
-						<%--<button class="login100-form-btn">
-							Login
-						</button>--%>
+						
 					</div>
 
 				</form>

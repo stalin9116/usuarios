@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica.ClassLibrary", "Logi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion.WebForms", "Presentacion.WebForms\Presentacion.WebForms.csproj", "{FC558BEC-C6C5-4140-AFEC-538E32C89943}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio.API", "Servicio.API\Servicio.API.csproj", "{6C7AE000-E7FC-4935-8526-12DE5D1608E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FC558BEC-C6C5-4140-AFEC-538E32C89943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC558BEC-C6C5-4140-AFEC-538E32C89943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC558BEC-C6C5-4140-AFEC-538E32C89943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7AE000-E7FC-4935-8526-12DE5D1608E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7AE000-E7FC-4935-8526-12DE5D1608E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7AE000-E7FC-4935-8526-12DE5D1608E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7AE000-E7FC-4935-8526-12DE5D1608E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
