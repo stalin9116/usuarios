@@ -76,6 +76,11 @@ namespace usuarios
 
         }
 
+        private void loginApi()
+        { 
+            
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

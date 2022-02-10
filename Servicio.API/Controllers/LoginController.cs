@@ -25,7 +25,12 @@ namespace Servicio.API.Controllers
                 return NotFound();
             }
 
-            return Ok(usuario);
+            return Ok(new { 
+                UserId = usuario.usu_id,
+                Usuario = $"{usuario.usu_nombres} {usuario.usu_apellidos}",
+                Correo = usuario.usu_correo,
+                Perfil = usuario.Rol.rol_descripcion
+            });
         }
 
 
