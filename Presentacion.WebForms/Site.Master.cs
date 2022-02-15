@@ -13,5 +13,19 @@ namespace Presentacion.WebForms
         {
 
         }
+
+        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["Usuario"] = null;
+            Response.Redirect("~/Public/wfmLogin.aspx");
+
+            Session.Remove("Usuario");
+
+            //Session.Clear();
+
+            //Session.Abandon();
+
+
+        }
     }
 }

@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Administracion\Vehiculos\wfmVehiculos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -312,6 +313,13 @@
     <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion\Vehiculos\wfmVehiculos.aspx.cs">
+      <DependentUpon>wfmVehiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\Vehiculos\wfmVehiculos.aspx.designer.cs">
+      <DependentUpon>wfmVehiculos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -369,7 +377,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administracion\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

@@ -7,29 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion.WebForms
+namespace Presentacion.WebForms.Administracion.Vehiculos
 {
 
 
-    public partial class SiteMaster
+    public partial class wfmVehiculos
     {
 
         /// <summary>
-        /// Control lnkCerrarSesion.
+        /// Control gdvVehiculos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCerrarSesion;
-
-        /// <summary>
-        /// Control MainContent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView gdvVehiculos;
     }
 }
