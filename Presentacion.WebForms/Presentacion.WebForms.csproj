@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Administracion\Vehiculos\wfmVehiculos.aspx" />
+    <Content Include="Administracion\Vehiculos\wfmVehiculosNuevo.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -240,6 +241,12 @@
     <Content Include="images\icons\icon-google.png" />
     <Content Include="images\icons\map-marker.png" />
     <Content Include="images\icons\symbol-01.png" />
+    <Content Include="images\icon_buscar.png" />
+    <Content Include="images\icon_delete.png" />
+    <Content Include="images\icon_guardar.png" />
+    <Content Include="images\icon_nuevo.png" />
+    <Content Include="images\modificar.png" />
+    <Content Include="images\regresar.png" />
     <Content Include="js\main.js" />
     <Content Include="Public\wfmLogin.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -319,6 +326,13 @@
     </Compile>
     <Compile Include="Administracion\Vehiculos\wfmVehiculos.aspx.designer.cs">
       <DependentUpon>wfmVehiculos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Vehiculos\wfmVehiculosNuevo.aspx.cs">
+      <DependentUpon>wfmVehiculosNuevo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\Vehiculos\wfmVehiculosNuevo.aspx.designer.cs">
+      <DependentUpon>wfmVehiculosNuevo.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

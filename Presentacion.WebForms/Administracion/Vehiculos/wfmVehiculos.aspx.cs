@@ -38,7 +38,8 @@ namespace Presentacion.WebForms.Administracion.Vehiculos
 
             if (vehiculos.Count > 0 && vehiculos != null)
             {
-                gdvVehiculos.DataSource = vehiculos.Select(data=> new { 
+                gdvVehiculos.DataSource = vehiculos.Select(data => new
+                {
                     ID = data.veh_id,
                     PLACA = data.veh_placaactual,
                     MARCA = data.Modelo.Marca.mar_descripcion,
@@ -52,5 +53,45 @@ namespace Presentacion.WebForms.Administracion.Vehiculos
 
         }
 
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void lnkNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBuscar_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void gdvVehiculos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string codigo = Convert.ToString(e.CommandArgument);
+
+            if (e.CommandName == "Modificar")
+            {
+                //codigo
+                Response.Redirect("wfmVehiculosNuevo.aspx?cod=" + codigo);
+
+                //
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+                Vehiculo vehiculo = new Vehiculo();
+                vehiculo = Logica.ClassLibrary.LogicaVehiculo.getVehiculoXId(int.Parse(codigo));
+                if (vehiculo != null)
+                {
+                    if (Logica.ClassLibrary.LogicaVehiculo.deleteVehiculo(vehiculo))
+                    {
+                        loadVehiculos();
+                    }
+                }
+
+            }
+        }
     }
 }

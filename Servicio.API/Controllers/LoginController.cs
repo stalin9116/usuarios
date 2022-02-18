@@ -29,7 +29,7 @@ namespace Servicio.API.Controllers
                 UserId = usuario.usu_id,
                 Usuario = $"{usuario.usu_nombres} {usuario.usu_apellidos}",
                 Correo = usuario.usu_correo,
-                Perfil = usuario.Rol.rol_descripcion
+                //Perfil = usuario.Rol.rol_descripcion
             });
         }
 

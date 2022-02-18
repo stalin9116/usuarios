@@ -25,6 +25,21 @@ namespace Logica.ClassLibrary
             }
         }
 
+        public static Vehiculo getVehiculoXId(int id)
+        {
+            try
+            {
+                var vehiculo = dc.Vehiculo.FirstOrDefault(data => data.veh_status == 'A'
+                                                       && data.veh_id.Equals(id));
+
+                return vehiculo;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al obtener Vehiculos " + ex.Message);
+            }
+        }
+
         public static Vehiculo getVehiculoXPlaca(string placa)
         {
             try
@@ -37,6 +52,22 @@ namespace Logica.ClassLibrary
             catch (Exception ex)
             {
                 throw new ArgumentException("Error al obtener Vehiculos " + ex.Message);
+            }
+        }
+
+
+        public static bool deleteVehiculo(Vehiculo vehiculo)
+        {
+            try
+            {
+                vehiculo.veh_status = 'I';
+                dc.SubmitChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
