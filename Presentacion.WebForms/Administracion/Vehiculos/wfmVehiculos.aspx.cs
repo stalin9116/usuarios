@@ -53,14 +53,19 @@ namespace Presentacion.WebForms.Administracion.Vehiculos
 
         }
 
+        private void nuevo()
+        {
+            Response.Redirect("wfmVehiculosNuevo.aspx");
+        }
+
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-
+            nuevo();
         }
 
         protected void lnkNuevo_Click(object sender, EventArgs e)
         {
-
+            nuevo();
         }
 
         protected void btnBuscar_Click(object sender, ImageClickEventArgs e)

@@ -72,5 +72,35 @@ namespace Logica.ClassLibrary
         }
 
 
+        public static bool saveVehiculo(Vehiculo dataVehiculo)
+        {
+            try
+            {
+                bool result = false;
+                dataVehiculo.veh_add = DateTime.Now;
+                dataVehiculo.veh_status = 'A';
+
+                var vehiculo= getVehiculoXPlaca(dataVehiculo.veh_placaactual);
+
+                if (vehiculo != null)
+                {
+                    throw new ArgumentException("Vehiculo ya existe");
+                }
+
+                dc.Vehiculo.InsertOnSubmit(dataVehiculo);
+                //Commit a la base
+                dc.SubmitChanges();
+
+
+                result = true;
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al guardar Vehiculo " + ex.Message);
+            }
+        }
+
     }
 }

@@ -43,13 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogicaCanton.cs" />
+    <Compile Include="LogicaColor.cs" />
     <Compile Include="LogicaEmail.cs" />
     <Compile Include="LogicaMatricula.cs" />
     <Compile Include="LogicaPersona.cs" />
     <Compile Include="LogicaProvincia.cs" />
     <Compile Include="LogicaRol.cs" />
+    <Compile Include="LogicaTipo.cs" />
     <Compile Include="LogicaUsuario.cs" />
     <Compile Include="LogicaVehiculo.cs" />
+    <Compile Include="LogicaYear.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Encriptar.cs" />
     <Compile Include="Utilidades\EnviarCorreo.cs" />
