@@ -102,5 +102,26 @@ namespace Logica.ClassLibrary
             }
         }
 
+        public static bool updateVehiculo(Vehiculo dataVehiculo)
+        {
+            try
+            {
+                bool result = false;
+                dataVehiculo.veh_update = DateTime.Now;
+                dataVehiculo.veh_status = 'A';
+
+                //Commit a la base
+                dc.SubmitChanges();
+
+                result = true;
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al modificar Vehiculo " + ex.Message);
+            }
+        }
+
     }
 }

@@ -18,10 +18,44 @@ namespace Presentacion.WebForms.Administracion.Vehiculos
                 if (Request["cod"] != null)
                 {
                     int condigoVehiculo = int.Parse(Request["cod"].ToString());
+                    loadVehiculo(condigoVehiculo);
                 }
 
                 loadTipoVehiculo();
                 loadColorVehiculo();
+            }
+        }
+
+        private void loadVehiculo(int idVehiculo)
+        {
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo = Logica.ClassLibrary.LogicaVehiculo.getVehiculoXId(idVehiculo);
+            if (vehiculo != null)
+            {
+                lblId.Text = vehiculo.veh_id.ToString();
+                txtMotor.Text = vehiculo.veh_motor;
+                //vehiculo.veh_anio = Convert.ToInt16(ddlYear.SelectedValue);
+                //vehiculo.veh_anio = 2018;
+                txtChasis.Text = vehiculo.veh_chasis;
+                txtlblCilindraje.Text = vehiculo.veh_cilindraje.ToString();
+                //vehiculo.veh_combustible = 'S';
+
+                txtFechaCompra.Text = vehiculo.veh_fechacompra.ToString();
+                txtObservacion.Text = vehiculo.veh_observacion;
+                txtNpasajeros.Text = vehiculo.veh_pasajeros.ToString();
+                txtplacaActual.Text = vehiculo.veh_placaactual;
+                txtplacaAnterior.Text = vehiculo.veh_placaanterior;
+                txtTonelaje.Text = vehiculo.veh_tonelaje.ToString();
+
+                ddlColor.SelectedValue = vehiculo.col_id.ToString();
+                ddlTipo.SelectedValue = vehiculo.tip_id.ToString();
+
+                //vehiculo.veh_carroceria = "SI";
+                //vehiculo.pai_id = Convert.ToInt16(ddlPais.SelectedValue);
+                //vehiculo.pai_id = 1;
+                //vehiculo.mod_id = Convert.ToInt32(ddlModelo.SelectedValue);
+                //vehiculo.mod_id = 1;
+                //vehiculo.cla_id = 1;
             }
         }
 
@@ -96,6 +130,19 @@ namespace Presentacion.WebForms.Administracion.Vehiculos
             regresar();
         }
 
+        private void saveVehiculo()
+        {
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                modificar();
+            }
+            else
+            {
+                guardar();
+            }
+
+        }
+
         private void guardar()
         {
             try
@@ -137,14 +184,58 @@ namespace Presentacion.WebForms.Administracion.Vehiculos
 
         }
 
+        private void modificar()
+        {
+            try
+            {
+                Vehiculo vehiculo = new Vehiculo();
+
+                vehiculo = Logica.ClassLibrary.LogicaVehiculo.getVehiculoXId(int.Parse(lblId.Text));
+                //vehiculo.veh_id = 
+                vehiculo.veh_motor = txtMotor.Text;
+                //vehiculo.veh_anio = Convert.ToInt16(ddlYear.SelectedValue);
+                vehiculo.veh_anio = 2018;
+                vehiculo.veh_chasis = txtChasis.Text;
+                vehiculo.veh_cilindraje = Convert.ToInt16(txtlblCilindraje.Text);
+                vehiculo.veh_combustible = 'S';
+                vehiculo.veh_fechacompra = Convert.ToDateTime(txtFechaCompra.Text);
+                vehiculo.veh_observacion = txtObservacion.Text;
+                vehiculo.veh_pasajeros = Convert.ToByte(txtNpasajeros.Text);
+                vehiculo.veh_placaactual = txtplacaActual.Text;
+                vehiculo.veh_placaanterior = txtplacaAnterior.Text;
+                vehiculo.veh_tonelaje = Convert.ToDecimal(txtTonelaje.Text);
+                vehiculo.col_id = Convert.ToInt32(ddlColor.SelectedValue);
+                vehiculo.tip_id = Convert.ToInt32(ddlTipo.SelectedValue);
+                vehiculo.veh_carroceria = "SI";
+                //vehiculo.pai_id = Convert.ToInt16(ddlPais.SelectedValue);
+                vehiculo.pai_id = 1;
+                //vehiculo.mod_id = Convert.ToInt32(ddlModelo.SelectedValue);
+                //vehiculo.mod_id = 1;
+                //vehiculo.cla_id = 1;
+
+                bool resGuardar = Logica.ClassLibrary.LogicaVehiculo.updateVehiculo(vehiculo);
+                if (resGuardar)
+                {
+                    lblMessage.Text = "Vehiculo Modificado correctamente";
+                    Response.Redirect("wfmVehiculos.aspx");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = ex.Message;
+            }
+
+        }
+
         protected void imbGuardar_Click(object sender, ImageClickEventArgs e)
         {
-            guardar();
+            saveVehiculo();
         }
 
         protected void lnkGuardar_Click(object sender, EventArgs e)
         {
-            guardar();
+            saveVehiculo();
         }
     }
 }
